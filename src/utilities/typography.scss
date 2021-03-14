@@ -1,0 +1,122 @@
+@import '../variables/typography.scss';
+
+// Font family 
+// ----------------------------------------------------------
+.font-mono { font-family: $mono-font !important; }
+
+// Heading font size
+// ----------------------------------------------------------
+
+// 56px mobile
+// 64px desktop
+.display-1 {
+    font-size: $display-1-size !important;
+    @include breakpoint(md) { font-size: $display-1-size-desktop !important; }
+}
+
+// 48px mobile
+// 56px desktop
+.display-2 {
+    font-size: $display-2-size !important; 
+    @include breakpoint(md) { font-size: $display-2-size-desktop !important; } 
+
+}
+// 40px mobile
+// 48px desktop
+.display-3 {
+    font-size: $display-3-size !important;
+    @include breakpoint(md) { font-size: $display-3-size-desktop !important; }
+}
+// 32px mobile
+// 40px desktop
+.h1 {
+    font-size: $h1-size !important;
+    @include breakpoint(md) { font-size: $h1-size-desktop !important;}
+}
+
+// 24px mobile
+// 32px desktop
+.h2 {
+    font-size: $h2-size !important;
+    @include breakpoint(md) { font-size: $h2-size-desktop !important; }
+}
+
+// 20px mobile
+// 24px desktop
+.h3 {
+    font-size: $h3-size !important;
+    @include breakpoint(md) { font-size: $h3-size-desktop !important; }
+}
+
+// 18px
+.h4 { font-size: $h4-size-desktop !important; }
+
+// 16px
+.h5 { font-size: $h5-size-desktop !important; }
+
+// 14px
+.h6 { font-size: $h6-size-desktop !important; }
+
+.display-1,
+.display-2,
+.display-3,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: $font-weight-bold;
+    // margin-top: 1rem;
+    // margin-bottom: 0.5rem;
+    // line-height: $line-height-condensed;
+}
+
+// Line height 
+// ---------------------------------------------------------- 
+.lh-condensed-ultra { line-height: $line-height-condensed-ultra !important; }
+.lh-condensed { line-height: $line-height-condensed !important; }
+.lh-default { line-height: $line-height-default !important; }
+.lh-0 { line-height: 0; }
+
+
+// Paragraph styles
+// ----------------------------------------------------------
+
+// leading paragraph
+.text-lead {
+    font-size: $h4-size-desktop !important;
+    font-weight: $font-weight-light !important;
+    line-height: $line-height-default !important;
+}
+
+// Text styles
+// ----------------------------------------------------------
+
+// Small font size
+.text-small { font-size: $font-size-small !important; }
+
+// Font weight
+.text-weight-normal { font-weight: $font-weight-normal !important;}
+.text-weight-bold { font-weight: $font-weight-bold !important;}
+.text-weight-semibold { font-weight: $font-weight-semibold !important;}
+.text-weight-light { font-weight: $font-weight-light !important;}
+
+// Text transform 
+.text-uppercase { text-transform: uppercase !important;}
+.text-strong { font-style: $font-weight-semibold !important; }
+.text-emphasis { font-style: italic !important; }
+
+// Text alignment
+.text-align-left { text-align: left !important; }
+.text-align-center { text-align: center !important; }
+.text-align-right { text-align: right !important; }
+
+// Text decoration
+.text-decoration-none { text-decoration: none !important; }
+.text-decoration-underline { text-decoration: underline !important; }
+.text-decoration-crossout { text-decoration: line-through !important; }
+
+// Lists
+// ----------------------------------------------------------
+.list-style-none { list-style: none !important; }

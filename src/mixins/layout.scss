@@ -1,0 +1,50 @@
+// Responsive media queries
+@mixin breakpoint($breakpoint) {
+  @if breakpoint == "" {
+    @content;
+  }
+
+  @else {
+    // Get key value
+    $value: map-get($breakpoints, $breakpoint);
+
+    // If key exists 
+    @if $value != null {
+      // Get media query value
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+
+    // If key doesn't exist
+    @else {
+      @warn "No value could be retrieved from `#{$breakpoint}`. Please make sure value is defined in breakpoints map.";
+    }
+  }
+}
+
+// Gaps between containers
+// Add padding and a negative margin to the outside of the container
+@mixin gutters ($gap-width: $spacer-3) {
+
+    > [class*="col-"] {
+      padding-right: $gap-width;
+      padding-left: $gap-width;
+      &:first-child { padding-left: 0 !important; }
+      &:last-child { padding-right: 0 !important; }
+    }
+}
+
+// Clearfix
+// Clears floats and mixin
+@mixin clearfix {
+    &:before {
+        display: table;
+        content: "";
+    }
+    &:after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+}

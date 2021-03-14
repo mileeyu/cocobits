@@ -1,0 +1,680 @@
+@import '../variables/layout.scss';
+@import '../mixins/layout.scss';
+
+// Container 
+// ----------------------------------------------------------
+@each $breakpoint, $container in $containers {
+    // Fixed containers
+    @if $container == 100% {
+        .container-full {
+            max-width: 100%;
+        }
+    }
+    @else {
+        // Responsive container
+        @include breakpoint($breakpoint) {
+            // Get key value
+            $value: map-get($breakpoints, $breakpoint);
+            .container-#{$breakpoint} {
+                max-width: $value !important;
+                margin-right: auto !important;
+                margin-left: auto !important;
+            }
+        }
+    }
+}
+
+// Fixed center container 
+.container { 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+    @include breakpoint($breakpoint) {
+        // Responsive columns
+        // Resizes width on each breakpoint
+        .col-#{$breakpoint}-1 { width: (1 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-2 { width: (2 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-3 { width: (3 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-4 { width: (4 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-5 { width: (5 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-6 { width: (6 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-7 { width: (7 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-8 { width: (8 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-9 { width: (9 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-10 { width: (10 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-11 { width: (11 / 12 * 100%) !important; }
+        .col-#{$breakpoint}-12 { width: 100%; }
+    }
+}
+
+// Fixed columns
+.col-1 { width: (1 / 12 * 100%); }
+.col-2 { width: (2 / 12 * 100%); }
+.col-3 { width: (3 / 12 * 100%); }
+.col-4 { width: (4 / 12 * 100%); }
+.col-5 { width: (5 / 12 * 100%); }
+.col-6 { width: (6 / 12 * 100%); }
+.col-7 { width: (7 / 12 * 100%); }
+.col-8 { width: (8 / 12 * 100%); }
+.col-9 { width: (9 / 12 * 100%); }
+.col-10 { width: (10 / 12 * 100%); }
+.col-11 { width: (11 / 12 * 100%); }
+.col-12 { width: 100%; }
+
+// Responsive offset columns
+@each $breakpoint, $variant in $responsive-variants {
+  @include breakpoint($breakpoint) {
+    .offset#{$variant}-1 { margin-left: (1 / 12 * 100%) !important; }
+    .offset#{$variant}-2 { margin-left: (2 / 12 * 100%) !important; }
+    .offset#{$variant}-3 { margin-left: (3 / 12 * 100%) !important; }
+    .offset#{$variant}-4 { margin-left: (4 / 12 * 100%) !important; }
+    .offset#{$variant}-5 { margin-left: (5 / 12 * 100%) !important; }
+    .offset#{$variant}-6 { margin-left: (6 / 12 * 100%) !important; }
+    .offset#{$variant}-7 { margin-left: (7 / 12 * 100%) !important; }
+    .offset#{$variant}-8 { margin-left: (8 / 12 * 100%) !important; }
+    .offset#{$variant}-9 { margin-left: (9 / 12 * 100%) !important; }
+    .offset#{$variant}-10 { margin-left: (10 / 12 * 100%) !important; }
+    .offset#{$variant}-11 { margin-left: (11 / 12 * 100%) !important; }
+  }
+}
+
+// Fixed offset-columns
+.offset-1 { margin-left: (1 / 12 * 100%); }
+.offset-2 { margin-left: (2 / 12 * 100%); }
+.offset-3 { margin-left: (3 / 12 * 100%); }
+.offset-4 { margin-left: (4 / 12 * 100%); }
+.offset-5 { margin-left: (5 / 12 * 100%); }
+.offset-6 { margin-left: (6 / 12 * 100%); }
+.offset-7 { margin-left: (7 / 12 * 100%); }
+.offset-8 { margin-left: (8 / 12 * 100%); }
+.offset-9 { margin-left: (9 / 12 * 100%); }
+.offset-10 { margin-left: (10 / 12 * 100%); }
+.offset-11 { margin-left: (11 / 12 * 100%); }
+
+// Fixed gutters
+.gutter {
+    @include gutters($spacer-3);
+}
+
+.gutter-narrow {
+    @include gutters($spacer-2);
+}
+
+.gutter-wide {
+    @include gutters($spacer-4);
+}
+
+// Display 
+// ----------------------------------------------------------
+
+// Responsive display box
+// For display block, grid, flex, inline, inline-block,
+// inline-flex, none, table and table-cell
+@each $breakpoint in map-keys($breakpoints) {
+    @include breakpoint($breakpoint) {
+        @each $display in $display-values {
+            .d-#{$breakpoint}-#{$display} {
+                display: $display !important;
+            }
+        }
+    }
+}
+
+// Fixed display
+@each $display in $display-values {
+    .d-#{$display} { display: $display; }
+}
+
+// Flexbox 
+// ----------------------------------------------------------
+// Responsive flex direction, wrap, grow and order
+@each $breakpoint in map-keys($breakpoints) {
+    @include breakpoint($breakpoint) {
+        // Responsive flex direction
+        .flex-#{$breakpoint}-row { flex-direction: row !important; }
+        .flex-#{$breakpoint}-row-reverse { flex-direction: row-reverse !important; }
+        .flex-#{$breakpoint}-col { flex-direction: column !important; }
+        .flex-#{$breakpoint}-col-reverse { flex-direction: column-reverse !important; }
+
+        // Responsive flex wrap
+        .flex-#{$breakpoint}-wrap { flex-wrap: wrap !important; }
+        .flex-#{$breakpoint}-nowrap { flex-wrap: nowrap !important; }
+        .flex-#{$breakpoint}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+
+        // Responsive flex grow
+        // Fills available space
+        .flex-#{$breakpoint}-1 { flex: 1 !important; }
+        // Fills available space and auto size based on content
+        .flex-#{$breakpoint}-auto { flex: auto !important; }
+        // Prevent growing flex item
+        .flex-#{$breakpoint}-grow-0 { flex-grow: 0 !important; }
+        // Prevent shrinking of flex item
+        .flex-#{$breakpoint}-shrink-0 {  flex-shrink: 0 !important; }
+
+        // Responsive flex order 
+        // Change the order of flex items
+        .flex-#{$breakpoint}-order-1 { order: 1 !important; }
+        .flex-#{$breakpoint}-order-2 { order: 2 !important; }
+        .flex-#{$breakpoint}-order-none { order: inherit !important; }
+    }
+} 
+
+// Fixed flex direction
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-col { flex-direction: column; }
+.flex-col-reverse { flex-direction: column-reverse; }
+
+// Fixed flex wrap
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+// Fixed flex grow
+.flex-1 { flex: 1; }
+.flex-auto { flex: auto; }
+.flex-grow-0 { flex-grow: 0; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+// Fixed flex order 
+.flex-order-1 { order: 1; }
+.flex-order-2 { order: 2; }
+.flex-order-none { order: inherit; }
+
+// Grid 
+// ----------------------------------------------------------
+// Responsive grid
+// Creates equally sized columns
+@each $breakpoint in map-keys($breakpoints) {
+    @for $i from 1 through 12 {
+        @include breakpoint($breakpoint) {
+            .grid-#{$breakpoint}-col-#{$i} { grid-template-columns: repeat($i, minmax(0, 1fr)) !important; }
+        }
+    }
+}
+
+// Fixed grid
+@for $i from 0 through 12 {
+    @if $i == 0 {
+        .grid-col-#{$i} { grid-template-columns: none; }
+    }
+    @else {
+        .grid-col-#{$i} { grid-template-columns: repeat($i, minmax(0, 1fr)); }
+    }
+}
+
+// Fixed grid auto flow
+.grid-flow-row { grid-auto-flow: row; }
+.grid-flow-col { grid-auto-flow: column; }
+.grid-flow-row-dense { grid-auto-flow: row dense; }
+.grid-flow-col-dense { grid-auto-flow: column dense; }
+
+// Grid Gap
+// ----------------------------------------------------------
+// Responsive grid gap
+
+@each $breakpoint in map-keys($breakpoints) {
+    @each $scale, $length in $spacer-map {
+        @include breakpoint($breakpoint) {
+            // Grid gap
+            // Sets length of gap size between elements
+            .gap-#{$breakpoint}-#{$scale} { grid-gap: $length !important; }
+
+            // Sets length of gap between the column elements
+            .gap-#{$breakpoint}-col-#{$scale} { column-gap: $length !important; }
+
+            // Sets the length of gap between the row elements
+            .gap-#{$breakpoint}-row-#{$scale} { row-gap: $length !important; }
+
+            // Flex gap
+            // Not all browsers support the gap for flexbox
+            // this is a workaround for the time being
+            .gap-#{$breakpoint}-flex-#{$scale} {
+                margin-top: -$length !important;
+                > * {
+                    margin-top: $length;
+                    &:not(:last-child) {
+                        margin-right: $length !important;
+                    }
+                }
+            }
+            .gap-#{$breakpoint}-flex-col-#{$scale} {
+                > *:not(:last-child) {
+                    margin-right: $length !important;
+                }
+            }
+            .gap-#{$breakpoint}-flex-row-#{$scale} {
+                > *:not(:last-child) {
+                    margin-bottom: $length !important;
+                }
+            }
+            .gap-#{$breakpoint}-flex-col-reverse-#{$scale} {
+                > *:not(:last-child) {
+                    margin-left: $length !important;
+                }
+            }
+            .gap-#{$breakpoint}-flex-row-reverse-#{$scale} {
+                > *:not(:last-child) {
+                    margin-top: $length !important;
+                }
+            }
+        }
+    }
+}
+
+// Fixed gaps
+@each $scale, $length in $spacer-map {
+    // Grid gaps 
+    .gap-#{$scale} { grid-gap: $length; }
+    .gap-col-#{$scale} { column-gap: $length; }
+    .gap-row-#{$scale} { row-gap: $length; }
+
+    // Flex gaps
+    .gap-flex-#{$scale} {
+        margin-top: -$length;
+        > * {
+            margin-top: $length;
+            &:not(:last-child) {
+                margin-right: $length;
+            }
+        }
+    }
+    .gap-flex-col-#{$scale} {
+        > *:not(:last-child) {
+            margin-right: $length;
+        }
+    }
+    .gap-flex-row-#{$scale} {
+        > *:not(:last-child) {
+            margin-bottom: $length;
+        }
+    }
+    .gap-flex-col-reverse-#{$scale} {
+        > *:not(:last-child) {
+            margin-left: $length;
+        }
+    }
+    .gap-flex-row-reverse-#{$scale} {
+        > *:not(:last-child) {
+            margin-top: $length;
+        }
+    }
+}
+
+// Display Alignment 
+// ----------------------------------------------------------
+
+@each $breakpoint in map-keys($breakpoints) {
+    @include breakpoint($breakpoint) {
+        // Responsive display justify content
+        // Aligns elements along main axis by adjusting gap size
+        .d-#{$breakpoint}-justify-start { justify-content: start !important; }
+        .d-#{$breakpoint}-justify-end { justify-content: end !important; }
+        .d-#{$breakpoint}-justify-center { justify-content: center !important; }
+        .d-#{$breakpoint}-justify-between { justify-content: space-between !important; }
+        .d-#{$breakpoint}-justify-around { justify-content: space-around !important; }
+        .d-#{$breakpoint}-justify-evenly { justify-content: space-evenly !important; }
+
+        // Responsive display justify items
+        // Aligns elements along main axis by adjusting 
+        // the padding within its own container
+        .d-#{$breakpoint}-align-start { justify-items: start !important; }
+        .d-#{$breakpoint}-align-end { justify-items: end !important; }
+        .d-#{$breakpoint}-align-center { justify-items: center !important; }
+        .d-#{$breakpoint}-align-stretch { justify-items: stretch !important; }
+
+        // Responsive display align content
+        // Aligns elements when flex wraps along cross axis
+        // by adjusting gap size
+        .d-#{$breakpoint}-content-start { align-content: start !important; }
+        .d-#{$breakpoint}-content-end { align-content: end !important; }
+        .d-#{$breakpoint}-content-center { align-content: center !important; }
+        .d-#{$breakpoint}-content-between { align-content: space-between !important; }
+        .d-#{$breakpoint}-content-around { align-content: space-around !important; }
+        .d-#{$breakpoint}-content-stretch { align-content: stretch !important; }
+
+        // Responsive display align inline-items
+        // Aligns elements that wrap along cross axis by
+        // adjusting padding in its own container
+        .d-#{$breakpoint}-items-start { align-items: start !important; }
+        .d-#{$breakpoint}-items-end { align-items: end !important; }
+        .d-#{$breakpoint}-items-center { align-items: center !important; }
+        .d-#{$breakpoint}-items-baseline { align-items: baseline !important; }
+        .d-#{$breakpoint}-items-stretch { align-items: stretch !important; }
+
+        // Responsive display align self
+        // Aligns self within its own container
+        // by adjusting margin along cross axis
+        .d-#{$breakpoint}-self-auto { align-self: auto !important; }
+        .d-#{$breakpoint}-self-start { align-self: start !important; }
+        .d-#{$breakpoint}-self-end { align-self: end !important; }
+        .d-#{$breakpoint}-self-flex-start { align-self: flex-start !important; }
+        .d-#{$breakpoint}-self-flex-end { align-self: flex-end !important; }
+        .d-#{$breakpoint}-self-center { align-self: center !important; }
+        .d-#{$breakpoint}-self-baseline { align-self: baseline !important; }
+        .d-#{$breakpoint}-self-stretch { align-self: stretch !important; }
+    }
+}
+
+// Fixed display justify content
+.d-justify-start { justify-content: start; }
+.d-justify-end { justify-content: end; }
+.d-justify-center { justify-content: center; }
+.d-justify-between { justify-content: space-between; }
+.d-justify-around { justify-content: space-around; }
+.d-justify-evenly { justify-content: space-evenly; }
+
+// Fixed display justify items
+.d-align-start { justify-items: start !important; }
+.d-align-end { justify-items: end !important; }
+.d-align-center { justify-items: center !important; }
+.d-align-stretch { justify-items: stretch !important; }
+
+// Fixed flex align inline-items
+.d-items-start { align-items: start; }
+.d-items-end { align-items: end; }
+.d-items-center { align-items: center; }
+.d-items-baseline { align-items: baseline; }
+.d-items-stretch { align-items: stretch; }
+
+// Fixed flex align content
+.d-content-start { align-content: start; }
+.d-content-end { align-content: end; }
+.d-content-center { align-content: center; }
+.d-content-between { align-content: space-between; }
+.d-content-around { align-content: space-around; }
+.d-content-stretch { align-content: stretch; }
+
+// Fixed flex align self
+.d-self-auto { align-self: auto; }
+.d-self-start { align-self: start; }
+.d-self-end { align-self: end; }
+.d-self-flex-start { align-self: flex-start; }
+.d-self-flex-end { align-self: flex-end; }
+.d-self-center { align-self: center; }
+.d-self-baseline { align-self: baseline; }
+.d-self-stretch { align-self: stretch; }
+
+
+// Position 
+// ----------------------------------------------------------
+
+// Responsive positions
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        @each $position in $responsive-positions {
+            .position#{$variant}-#{$position} { position: $position !important; }
+
+            .top#{$variant}-0 { top: 0px !important; }
+            .right#{$variant}-0 { right: 0px !important; }
+            .bottom#{$variant}-0 { bottom: 0px !important; }
+            .left#{$variant}-0 { left: 0px !important; }
+            .top#{$variant}-auto { top: auto !important; }
+            .right#{$variant}-auto { right: auto !important; }
+            .bottom#{$variant}-auto { bottom: auto !important; }
+            .left#{$variant}-auto { left: auto !important; }
+        }
+    }
+}
+
+// Fixed positions
+@each $position in $responsive-positions {
+    .position-#{$position} { position: $position; }
+}
+
+.top-0 { top: 0px; }
+.right-0 { right: 0px; }
+.bottom-0 { bottom: 0px; }
+.left-0 { left: 0px; }
+.top-auto { top: auto; }
+.right-auto { right: auto; }
+.bottom-auto { bottom: auto; }
+.left-auto { left: auto; }
+
+// Overflow 
+// ----------------------------------------------------------
+
+// Responsive overflow
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        @each $overflow in (visible, hidden, auto, scroll) {
+            .overflow#{$variant}-#{$overflow} { overflow: $overflow !important; }
+            .overflow#{$variant}-#{$overflow} { overflow: $overflow !important; }
+            .overflow#{$variant}-y-#{$overflow} { overflow: $overflow !important; }
+        }
+    }
+}
+
+// Fixed overflow
+.overflow-visible { overflow: visible; }
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-scroll { overflow: scroll; }
+
+// Float
+// ----------------------------------------------------------
+
+// Responsive floats 
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        .float#{$variant}-left { float: left !important; }
+        .float#{$variant}-right { float: right !important; }
+        .float#{$variant}-none { float: none !important; }
+    }
+}
+
+// Fixed floats
+.float-left { float: left; }
+.float-right { float: right; }
+.float-none { float: none; }
+
+// Clear floats 
+.clearfix { @include clearfix; }
+
+// Width & Height 
+// ----------------------------------------------------------
+
+@each $breakpoint, $variant in $responsive-variants {
+    // Responsive height
+    @include breakpoint($breakpoint) {
+        @each $key, $size in $size-map {
+            // Sets height at each breakpoint
+            .height#{$variant}-#{$key} { height: $size !important; }
+        }
+    }
+}
+
+// Fixed width and height
+// Max width 100%
+.width-fit { max-width: 100% !important; }
+// Set width to 100%
+.width-full { width: 100% !important; }
+// Max height 100%
+.height-fit { max-height: 100% !important; }
+// Set width to 100%
+.height-full { height: 100% !important; }
+
+@each $key, $size in $size-map {
+    // Fixed height scale
+    .height-#{$key} { height: $size; }
+}
+
+// Space (margin, padding) 
+// ----------------------------------------------------------
+
+// Responsive margins
+// Sets spacer values to margin for each breakpoint
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        // Set auto size to right and left of margin
+        .mx#{$variant}-auto {
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        @each $scale, $length in $spacer-map {
+            // Set size of spacer to all margin sides
+            .m#{$variant}-#{$scale} { margin: $length !important; }
+            // Set size of spacer to margin top
+            .mt#{$variant}-#{$scale} { margin-top: $length !important; }
+            // Set size of spacer to margin right
+            .mr#{$variant}-#{$scale} { margin-right: $length !important; }
+            // Set size of spacer to margin bottom
+            .mb#{$variant}-#{$scale} { margin-bottom: $length !important; }
+            // Set size of spacer to margin left
+            .ml#{$variant}-#{$scale} { margin-left: $length !important; }
+
+            // Sets negative spacer values to margin
+            @if ($length != 0) {
+                // Set size of spacer to margin top
+                .mt#{$variant}-n#{$scale} { margin-top: -$length !important; }
+                // Set size of spacer to margin right
+                .mr#{$variant}-n#{$scale} { margin-right: -$length !important; }
+                // Set size of spacer to margin bottom
+                .mb#{$variant}-n#{$scale} { margin-bottom: -$length !important; }
+                // Set size of spacer to margin left
+                .ml#{$variant}-n#{$scale} { margin-left: -$length !important; }
+            }
+
+            // Sets size of spacer to right and left of margin
+            .mx#{$variant}-#{$scale} {
+                margin-right: $length !important;
+                margin-left: $length !important;
+            }
+
+            // Sets size of spacer to top and bottom of margin
+            .my#{$variant}-#{$scale} {
+                margin-top: $length !important;
+                margin-bottom: $length !important;
+            }
+        }
+    }
+}
+
+// fixed margins
+// add spacer value to margin
+@each $scale, $length in $spacer-map {
+    .m-#{$scale} { margin: $length; }
+    .mt-#{$scale} { margin-top: $length; }
+    .mr-#{$scale} { margin-right: $length; }
+    .mb-#{$scale} { margin-bottom: $length; }
+    .ml-#{$scale} { margin-left: $length; }
+
+    // Sets negative spacer values to margin
+    @if ($length != 0) {
+        .mt-n#{$scale} { margin-top: -$length; }
+        .mr-n#{$scale} { margin-right: -$length; }
+        .mb-n#{$scale} { margin-bottom: -$length; }
+        .ml-n#{$scale} { margin-left: -$length; }
+    }
+
+    // Sets size of spacer to right and left of margin
+    .mx-#{$scale} {
+        margin-right: $length;
+        margin-left: $length;
+    }
+
+    // Sets size of spacer to top and bottom of margin
+    .my-#{$scale} {
+        margin-top: $length;
+        margin-bottom: $length;
+    }
+
+    // Set auto size to right and left of margin
+    .mx-auto {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+// responsive paddings
+// Sets spacer values to padding for each breakpoint
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        // Set auto size to right and left of padding
+        .px#{$variant}-auto {
+            padding-right: auto !important;
+            padding-left: auto !important;
+        }
+
+        @each $scale, $length in $spacer-map {
+            // Set size of spacer to all padding sides
+            .p#{$variant}-#{$scale} { padding: $length !important; }
+            // Set size of spacer to padding top
+            .pt#{$variant}-#{$scale} { padding-top: $length !important; }
+            // Set size of spacer to padding right
+            .pr#{$variant}-#{$scale} { padding-right: $length !important; }
+            // Set size of spacer to padding bottom
+            .pb#{$variant}-#{$scale} { padding-bottom: $length !important; }
+            // Set size of spacer to padding left
+            .pl#{$variant}-#{$scale} { padding-left: $length !important; }
+
+            // Sets spacer values to right and left of padding
+            .px#{$variant}-#{$scale} {
+                padding-right: $length !important;
+                padding-left: $length !important;
+            }
+
+            // Sets spacer values to top and bottom of padding
+            .py#{$variant}-#{$scale} {
+                padding-top: $length !important;
+                padding-bottom: $length !important;
+            }
+        }
+    }
+}
+
+// fixed paddings
+// add spacer value to padding
+@each $scale, $length in $spacer-map {
+    .p-#{$scale} { padding: $length; }
+    .pt-#{$scale} { padding-top: $length; }
+    .pr-#{$scale} { padding-right: $length; }
+    .pb-#{$scale} { padding-bottom: $length; }
+    .pl-#{$scale} { padding-left: $length; }
+
+    // Sets negative spacer values to padding
+    @if ($length != 0) {
+        .pt-n#{$scale} { padding-top: -$length; }
+        .pr-n#{$scale} { padding-right: -$length; }
+        .pb-n#{$scale} { padding-bottom: -$length; }
+        .pl-n#{$scale} { padding-left: -$length; }
+    }
+
+    // Sets size of spacer to right and left of padding
+    .px-#{$scale} {
+        padding-right: $length;
+        padding-left: $length;
+    }
+
+    // Sets size of spacer to top and bottom of padding
+    .py-#{$scale} {
+        padding-top: $length;
+        padding-bottom: $length;
+    }
+
+    // Set auto size to right and left of padding
+    .px-auto {
+        padding-right: auto;
+        padding-left: auto;
+    }
+}
+
+// Z-index 
+// ----------------------------------------------------------
+
+// Responsive z-index
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        .zindex#{$variant}-00 { z-index: 1000 !important; }
+        .zindex#{$variant}-01 { z-index: 1020 !important; }
+        .zindex#{$variant}-02 { z-index: 1040 !important; }
+    }
+}
+
+// Fixed z-index
+.zindex-00 { z-index: 1000; }
+.zindex-01 { z-index: 1020; }
+.zindex-02 { z-index: 1040; }

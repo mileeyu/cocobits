@@ -1,0 +1,24 @@
+@import '../variables/typography.scss';
+
+// Sets font size at each breakpoint
+@mixin h1 {
+    font-size: $h1-size;
+    @include breakpoint(md) { font-size: $h1-size-desktop; }
+}
+@mixin h2 {
+    font-size: $h2-size;
+    @include breakpoint(md) { font-size: $h2-size-desktop; }
+}
+@mixin h3 {
+    font-size: $h3-size;
+    @include breakpoint(md) { font-size: $h3-size-desktop; }
+}
+@mixin h4 {
+    font-size: $h4-size-desktop;
+}
+@mixin h5 {
+    font-size: $h5-size-desktop;
+}
+@mixin h6 {
+    font-size: $h6-size-desktop;
+}

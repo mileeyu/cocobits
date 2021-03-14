@@ -1,0 +1,18 @@
+// Border between element
+// Add border after every child element
+
+// Divider for columns
+@mixin divider-col ($border-type: $border) {
+  > * {
+    border-right: $border;
+    &:last-child { border-right: 0; }
+  }
+}
+
+// Divider for rows
+@mixin divider-row ($border: $border) {
+  > * {
+    border-bottom: $border; 
+    &:last-child { border-bottom: 0; }
+  }
+}

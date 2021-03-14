@@ -1,0 +1,14 @@
+// applied to a, button, input, etc to make invisible
+// but accessible to screen readers
+.display-visually-hide {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+// invisible visually and to screen readers
+.display-hide { display: none !important; }

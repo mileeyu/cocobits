@@ -1,0 +1,267 @@
+@import '../variables/layout.scss';
+@import '../variables/content.scss';
+@import '../variables/color.scss';
+@import '../mixins/layout.scss';
+@import '../mixins/content.scss';
+
+// Gray Border
+// ---------------------------------------------------------- 
+
+// Responsive gray borders
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        // Set gray border on all sides
+        .border#{$variant} {border: $border; }
+        // Remove border or set border width to 0
+        .border#{$variant}-0 {border: 0 !important; }
+
+        // Set gray border to x-axis
+        .border#{$variant}-x {
+            border-right: $border;
+            border-left: $border;
+        }
+
+        // Set gray border to y-axis
+        .border#{$variant}-y {
+            border-top: $border;
+            border-bottom: $border;
+        }
+
+        // Set border to a single side
+        .border#{$variant}-top { border-top: $border; }
+        .border#{$variant}-right { border-right: $border; }
+        .border#{$variant}-bottom { border-bottom: $border; }
+        .border#{$variant}-left { border-left: $border; }
+
+        // Remove border on a single side
+        .border#{$variant}-top-0 { border-top: 0; }
+        .border#{$variant}-right-0 { border-right: 0; }
+        .border#{$variant}-bottom-0 { border-bottom: 0; }
+        .border#{$variant}-left-0 { border-left: 0; }
+
+        // Responsive rounded corners
+        .rounded#{$variant} { border-radius: $border-radius; }
+        .rounded#{$variant}-0 { border-radius: 0; }
+        .rounded#{$variant}-1 { border-radius: $border-radius-1; }
+        .rounded#{$variant}-2 { border-radius: $border-radius-2; }
+        .rounded#{$variant}-3 { border-radius: $border-radius-3; }
+        .rounded#{$variant}-4 { border-radius: $border-radius-4; }
+        .rounded#{$variant}-5 { border-radius: $border-radius-5; }
+
+        // Round corners on one edge
+        @each $edge, $corners in $edge-map {
+            .rounded#{$variant}-#{$edge}-0 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: 0 !important;
+                }
+            }
+
+            .rounded#{$variant}-#{$edge}-1 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: $border-radius-1 !important;
+                }
+            }
+
+            .rounded#{$variant}-#{$edge}-2 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: $border-radius-2 !important;
+                }
+            }
+
+            .rounded#{$variant}-#{$edge}-3 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: $border-radius-3 !important;
+                }
+            }
+            .rounded#{$variant}-#{$edge}-4 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: $border-radius-4 !important;
+                }
+            }
+            .rounded#{$variant}-#{$edge}-5 {
+                @each $corner in $corners {
+                    border-#{$corner}-radius: $border-radius-5 !important;
+                }
+            }
+        }
+    }
+}
+
+// Fixed borders
+.border {border: $border; }
+.border-0 {border: 0; }
+
+.border-x {
+    border-right: $border;
+    border-left: $border;
+}
+
+.border-y {
+    border-top: $border;
+    border-bottom: $border;
+}
+
+.border-top { border-top: $border; }
+.border-right { border-right: $border; }
+.border-bottom { border-bottom: $border; }
+.border-left { border-left: $border; }
+
+.border-top-0 { border-top: 0; }
+.border-right-0 { border-right: 0; }
+.border-bottom-0 { border-bottom: 0; }
+.border-left-0 { border-left: 0; }
+
+// Divider
+// ---------------------------------------------------------- 
+.divider {
+    margin: 1rem 0 1.25rem;
+    max-width: 2rem;
+    height: 0.125rem;
+}
+
+// Horizontal dividers
+.divider-col {
+    @include divider-col($border);
+}
+
+// Vertical dividers
+.divider-row {
+    @include divider-row($border);
+}
+
+// Rounded Corner
+// ---------------------------------------------------------- 
+
+// Fixed Rounded corner radius 
+.rounded { border-radius: $border-radius; }
+.rounded-0 { border-radius: 0; }
+.rounded-1 { border-radius: $border-radius-1; }
+.rounded-2 { border-radius: $border-radius-2; }
+.rounded-3 { border-radius: $border-radius-3; }
+.rounded-4 { border-radius: $border-radius-4; }
+.rounded-5 { border-radius: $border-radius-5; }
+
+// Fixed round corners on one edge
+@each $edge, $corners in $edge-map {
+    .rounded-#{$edge}-0 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: 0 !important;
+        }
+    }
+
+    .rounded-#{$edge}-1 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: $border-radius-1 !important;
+        }
+    }
+
+    .rounded-#{$edge}-2 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: $border-radius-2 !important;
+        }
+    }
+
+    .rounded-#{$edge}-3 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: $border-radius-3 !important;
+        }
+    }
+
+    .rounded-#{$edge}-4 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: $border-radius-4 !important;
+        }
+    }
+
+    .rounded-#{$edge}-5 {
+        @each $corner in $corners {
+            border-#{$corner}-radius: $border-radius-5 !important;
+        }
+    }
+}
+
+// Circle or pill
+.circle { border-radius: 50%; }
+.rounded-full { border-radius: 1000px; }
+
+// Outline
+.outline { outline: 1px solid $color-border-primary; }
+
+// Box Shadow
+// ---------------------------------------------------------- 
+
+// Sets a blurred, shadow effect that conforms to the shape 
+// of the element itself
+.box-shadow-0 { box-shadow: none !important; }
+.box-shadow-1 { box-shadow: 0 1px 4px -1px rgba(76, 76, 76, 0.24) !important; }
+.box-shadow-2 { box-shadow: 0 2px 6px 0 rgba(76, 76, 76, 0.24) !important; }
+.box-shadow-3 { box-shadow: 0 3px 8px 1px rgba(76, 76, 76, 0.24) !important; }
+
+// Opacity
+// ---------------------------------------------------------- 
+
+// Responsive opacity
+@each $breakpoint, $variant in $responsive-variants {
+    @include breakpoint($breakpoint) {
+        // makes an element transparent by 0 - 90%
+        @each $key, $opacity in $opacity-map {
+            .opacity#{$variant}-#{$key} { filter: opacity($opacity) !important; }
+        }
+        .opacity#{$variant}-none { filter: opacity(1) !important; }
+    }
+}
+
+// Fixed opacity scale
+@each $key, $opacity in $opacity-map {
+    .opacity-#{$key} { filter: opacity($opacity); }
+}
+
+.opacity-none { filter: opacity(1);}
+
+// Background
+// ---------------------------------------------------------- 
+
+// Filter blur
+@each $key, $size in $size-map {
+    .blur-#{$key} { backdrop-filter: blur($size); }
+}
+
+// Background color opacity
+@each $key, $opacity in $opacity-map {
+    // White background opacity
+    .bg-opacity-white-#{$key} { background-color: rgba(255, 255, 255, $opacity) !important; }
+    // Black background opacity
+    .bg-opacity-black-#{$key} { background-color: rgba(0, 0, 0, $opacity) !important; }
+}
+
+// Background position
+.bg-pos-top { background-position: top !important; }
+.bg-pos-right { background-position: right !important; }
+.bg-pos-bottom { background-position: bottom !important; }
+.bg-pos-left { background-position: left !important; }
+.bg-pos-center { background-position: center !important; }
+
+// Background size
+.bg-size-contain { background-size: contain !important; }
+.bg-size-cover { background-size: cover !important; }
+.bg-size-auto { background-size: auto !important; }
+.bg-size-height-full { background-size: auto 100% !important; }
+.bg-size-width-full { background-size: 100% auto !important; }
+
+// Background repeat
+.bg-repeat { background-repeat: repeat !important; }
+.bg-repeat-0 { background-repeat: no-repeat !important; }
+.bg-repeat-x { background-repeat: repeat no-repeat !important; }
+.bg-repeat-y { background-repeat: no-repeat repeat !important; }
+
+// Table 
+// ---------------------------------------------------------- 
+
+// Collapses the border around table content
+.table-border-collapse { border-collapse: collapse; }
+
+// Automatically resize cell based on content
+.table-auto { table-layout: auto; }
+
+// Sets fixed widths for columns 
+.table-fixed { table-layout: fixed; }

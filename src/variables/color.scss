@@ -1,0 +1,49 @@
+// Black & white
+$black: rgb(0, 0, 0) !default;
+$white: rgb(255, 255, 255) !default; 
+
+// Gray tints
+$gray-050: rgb(248, 248, 250) !default; // background default
+$gray-100: rgb(231, 231, 231) !default; 
+$gray-200: rgb(209, 209, 209) !default; // border primary
+$gray-300: rgb(170, 170, 171) !default;
+$gray-400: rgb(122, 122, 123) !default; 
+$gray-500: rgb(76, 76, 76) !default;    // text secondary
+$gray-600: rgb(41, 41, 42) !default;
+$gray-700: rgb(15, 15, 15) !default;    // text primary
+
+// Blue tints
+$blue-050: rgb(235, 244, 254) !default; // background default
+$blue-100: rgb(211, 231, 255) !default; 
+$blue-200: rgb(137, 186, 248) !default;
+$blue-300: rgb(59, 140, 244) !default; // text default
+$blue-400: rgb(47, 112, 195) !default;
+$blue-500: rgb(35, 84, 146) !default;
+$blue-600: rgb(18, 42, 73) !default;
+$blue-700: rgb(12, 28, 49) !default;
+
+// Red tints
+$red-050: rgb(255, 234, 234) !default; // background default
+$red-100: rgb(255, 205, 205) !default; 
+$red-200: rgb(255, 169, 169) !default; 
+$red-300: rgb(255, 122, 122) !default; 
+$red-400: rgb(255, 77, 77) !default; // text default
+$red-500: rgb(236, 32, 32) !default;
+$red-600: rgb(193, 16, 16) !default;
+$red-700: rgb(139, 12, 12) !default;
+
+// CocoBase default colors
+$color-text-primary: $gray-700 !default;
+$color-text-secondary: $gray-500 !default;
+$color-text-tertiary: $gray-300 !default;
+$color-text-link: $blue-300 !default;
+$color-text-error: $red-500 !default;
+
+$color-bg-light: $gray-050 !default;
+$color-bg-dark: $blue-700 !default;
+$color-bg-info: $blue-100 !default;
+$color-bg-error: $red-100 !default;
+$color-bg-highlight: $blue-100 !default;
+
+$color-border-primary: $gray-200 !default;
+$color-border-error: $red-500 !default;

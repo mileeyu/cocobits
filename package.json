@@ -1,0 +1,22 @@
+{
+    "name": "cocobits",
+    "version": "1.0.0",
+    "description": "Cocobits provides a CSS foundational system that empowers designers to build elegant user experiences. Responsive, interchangeable utility classes allow flexibility and consistency for any web application.",
+    "author": "Milee Yu",
+    "license": "MIT",
+    "sass": "index.scss",
+    "files": [
+        "src",
+        "css"
+    ],
+    "repository": "https://github.com/mileeme/cocobits.git",
+    "keywords": [
+        "cocobits",
+        "css",
+        "design-system",
+        "oocss",
+        "functional css",
+        "responsive",
+        "framework"
+    ]
+}

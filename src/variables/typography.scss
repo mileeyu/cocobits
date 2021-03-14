@@ -1,0 +1,48 @@
+// Heading sizes - mobile
+$display-1-size: 56px !default;
+$display-2-size: 48px !default;
+$display-3-size: 40px !default;
+$h1-size: 32px !default;
+$h2-size: 24px !default;
+$h3-size: 20px !default;
+
+// Heading sizes - desktop
+$display-1-size-desktop: 64px !default;
+$display-2-size-desktop: 56px !default;
+$display-3-size-desktop: 48px !default;
+$h1-size-desktop: 40px !default;
+$h2-size-desktop: 32px !default;
+$h3-size-desktop: 24px !default;
+$h4-size-desktop: 18px !default;
+$h5-size-desktop: 16px !default;
+$h6-size-desktop: 14px !default;
+
+// Blockquote
+$blockquote-size: 22px !default;
+
+// Font weights
+$font-weight-bold: 600 !default;
+$font-weight-semibold: 500 !default;
+$font-weight-normal: 400 !default;
+$font-weight-light: 300 !default;
+
+// Line heights
+$line-height-condensed-ultra: 1 !default;
+$line-height-condensed: 1.375 !default;
+$line-height-default: 1.5 !default;
+
+// Font stack
+$body-font: Helvetica, arial, sans-serif !default;
+
+// Monospace font stack 
+$mono-font: Menlo, monospace !default;
+
+// Base body size
+$body-font-size: 16px !default;
+$body-line-height: $line-height-default !default;
+
+// Small
+$font-size-small: 12px !default;
+$small: 0.875 !default;
+
+
