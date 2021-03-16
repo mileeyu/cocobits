@@ -33,14 +33,14 @@ $ npm install cocobits
 ```
 
 ### Quick Start
-Include the link in the head of your base HTML file.
+Include the following link in the head of your base HTML file:
 ```HTML
 <link rel="stylesheet" href="https://unpkg.com/cocobits/css/cocobits.min.css">
 ```
 
 ## Documentation
 
-The Cocobits documentation is available at: 
+The Cocobits documentation is available at: [cocobit.github.io](cocobits.github.io)
 
 ## Licence  
 
