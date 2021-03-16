@@ -9,9 +9,9 @@
     </a>
 </p>
 
-Cocobits provides a CSS foundational system that empowers designers to build elegant user experiences. Responsive, interchangeable utility classes allow flexibility and consistency for any web application.
+Cocobits is a responsive CSS foundational system to build elegant web applications. Influenced by object-oriented CSS principles and functional CSS, interchangeable utility classes allow flexibility and consistency for any web application.
 
-Influenced by Object-Oriented CSS principles and functional CSS, Cocobits uses SASS variables and mixins and strives to meet the highest WCAG accessibility standards.
+Cocobits uses SASS variables and mixins and strives to meet the highest WCAG accessibility standards.
 
 ## Highlights  
 
