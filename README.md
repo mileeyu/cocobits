@@ -4,8 +4,8 @@
     <a aria-label="npm package" href="https://www.npmjs.com/package/cocobits">
         <img alt="" src="https://img.shields.io/npm/v/cocobits.svg">
     </a>
-    <a aria-label="license" href="https://github.com/cocobits/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/cocobits/cocobits.svg">
+    <a aria-label="license" href="https://img.shields.io/badge/license-MIT-green">
+    <img src="https://img.shields.io/static/v1?label=license&message=MIT&color=green">
     </a>
 </p>
 
