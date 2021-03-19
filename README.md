@@ -1,4 +1,7 @@
-<h1 align="center">Cocobits</h1>
+<div align="center">
+<img width="64" height="64" src="img/cocobits_dark_64px.png" alt="Cocobits icon">
+<h1>Cocobits</h1>
+</div>
 
 <p align="center">
     <a aria-label="npm package" href="https://www.npmjs.com/package/cocobits">
@@ -40,7 +43,7 @@ Include the following link in the head of your base HTML file:
 
 ## Documentation
 
-The Cocobits documentation is available at: [cocobit.github.io](cocobits.github.io)
+The Cocobits documentation is available at: [cocobits.github.io](https://cocobits.github.io/)
 
 ## Licence  
 
