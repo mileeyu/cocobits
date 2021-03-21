@@ -47,4 +47,4 @@ The Cocobits documentation is available at: [cocobits.github.io](https://cocobit
 
 ## Licence  
 
-[MIT](LICENSE) © Milee Yu
+[MIT](LICENSE)
