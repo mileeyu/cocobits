@@ -10,7 +10,7 @@ $border: $border-width $border-style $color-border-primary !default;
 // default border-radius
 $border-radius: 8px !default;
 
-$border-radius-1: round($spacer / 4) !default;          // 2px
+$border-radius-1: round($border-radius / 4) !default;          // 2px
 $border-radius-2: round($border-radius / 2) !default;   // 4px
 $border-radius-3: $border-radius !default;              // 8px
 $border-radius-4: 16px !default;                        // 16px
