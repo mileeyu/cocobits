@@ -104,6 +104,7 @@ pre {
     background: $blue-700;
     border-radius: $border-radius;
     white-space: pre-wrap;
+    overflow-x: auto;
     font-family: $mono-font;
     font-size: $body-font-size * $small;
     line-height: $line-height-default;
