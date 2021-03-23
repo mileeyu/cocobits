@@ -3,74 +3,74 @@
 // Colors
 // ----------------------------------------------------------
 
-.black { color: $black; }
-.white { color: $white; }
+.black { color: $black !important; }
+.white { color: $white !important; }
 
 // gray tints
-.gray-050 { color: $gray-050; }
-.gray-100 { color: $gray-100; }
-.gray-200 { color: $gray-200; } // gray border default
-.gray-300 { color: $gray-300; }
-.gray-400 { color: $gray-400; }
-.gray-500 { color: $gray-500; } // gray text default
-.gray-600 { color: $gray-600; }
-.gray-700 { color: $gray-700; }
+.gray-050 { color: $gray-050 !important; }
+.gray-100 { color: $gray-100 !important; }
+.gray-200 { color: $gray-200 !important; } // gray border default
+.gray-300 { color: $gray-300 !important; }
+.gray-400 { color: $gray-400 !important; }
+.gray-500 { color: $gray-500 !important; } // gray text default
+.gray-600 { color: $gray-600 !important; }
+.gray-700 { color: $gray-700 !important; }
 
 // blue tints
-.blue-050 { color: $blue-050; }
-.blue-100 { color: $blue-100; }
-.blue-200 { color: $blue-200; }
-.blue-300 { color: $blue-300; } // blue text default
-.blue-400 { color: $blue-400; }
-.blue-500 { color: $blue-500; }
-.blue-600 { color: $blue-600; }
-.blue-700 { color: $blue-700; }
+.blue-050 { color: $blue-050 !important; }
+.blue-100 { color: $blue-100 !important; }
+.blue-200 { color: $blue-200 !important; }
+.blue-300 { color: $blue-300 !important; } // blue text default
+.blue-400 { color: $blue-400 !important; }
+.blue-500 { color: $blue-500 !important; }
+.blue-600 { color: $blue-600 !important; }
+.blue-700 { color: $blue-700 !important; }
 
 // red tints
-.red-050 { color: $red-050; }
-.red-100 { color: $red-100; }
-.red-200 { color: $red-200; }
-.red-300 { color: $red-300; }
-.red-400 { color: $red-400; } // red text default
-.red-500 { color: $red-500; }
-.red-600 { color: $red-600; }
-.red-700 { color: $red-700; }
+.red-050 { color: $red-050 !important; }
+.red-100 { color: $red-100 !important; }
+.red-200 { color: $red-200 !important; }
+.red-300 { color: $red-300 !important; }
+.red-400 { color: $red-400 !important; } // red text default
+.red-500 { color: $red-500 !important; }
+.red-600 { color: $red-600 !important; }
+.red-700 { color: $red-700 !important; }
 
 
 // Background Colors
 // ----------------------------------------------------------
-.bg-black { background-color: $black; }
-.bg-white { background-color: $white; }
+.bg-black { background-color: $black !important; }
+.bg-white { background-color: $white !important; }
 
 // bg gray tints
-.bg-gray-050 { background-color: $gray-050; } // gray background default
-.bg-gray-100 { background-color: $gray-100; }
-.bg-gray-200 { background-color: $gray-200; }
-.bg-gray-300 { background-color: $gray-300; }
-.bg-gray-400 { background-color: $gray-400; }
-.bg-gray-500 { background-color: $gray-500; }
-.bg-gray-600 { background-color: $gray-600; }
-.bg-gray-700 { background-color: $gray-700; }
+.bg-gray-050 { background-color: $gray-050 !important; } // gray background default
+.bg-gray-100 { background-color: $gray-100 !important; }
+.bg-gray-200 { background-color: $gray-200 !important; }
+.bg-gray-300 { background-color: $gray-300 !important; }
+.bg-gray-400 { background-color: $gray-400 !important; }
+.bg-gray-500 { background-color: $gray-500 !important; }
+.bg-gray-600 { background-color: $gray-600 !important; }
+.bg-gray-700 { background-color: $gray-700 !important; }
 
 // bg blue tints
-.bg-blue-050 { background-color: $blue-050; } // blue background default
-.bg-blue-100 { background-color: $blue-100; }
-.bg-blue-200 { background-color: $blue-200; }
-.bg-blue-300 { background-color: $blue-300; }
-.bg-blue-400 { background-color: $blue-400; }
-.bg-blue-500 { background-color: $blue-500; }
-.bg-blue-600 { background-color: $blue-600; }
-.bg-blue-700 { background-color: $blue-700; }
+.bg-blue-050 { background-color: $blue-050 !important; } // blue background default
+.bg-blue-100 { background-color: $blue-100 !important; }
+.bg-blue-200 { background-color: $blue-200 !important; }
+.bg-blue-300 { background-color: $blue-300 !important; }
+.bg-blue-400 { background-color: $blue-400 !important; }
+.bg-blue-500 { background-color: $blue-500 !important; }
+.bg-blue-600 { background-color: $blue-600 !important; }
+.bg-blue-700 { background-color: $blue-700 !important; }
 
 // bg red tints
-.bg-red-050 { background-color: $red-050; } // red background default
-.bg-red-100 { background-color: $red-100; }
-.bg-red-200 { background-color: $red-200; }
-.bg-red-300 { background-color: $red-300; }
-.bg-red-400 { background-color: $red-400; }
-.bg-red-500 { background-color: $red-500; }
-.bg-red-600 { background-color: $red-600; }
-.bg-red-700 { background-color: $red-700; }
+.bg-red-050 { background-color: $red-050 !important; } // red background default
+.bg-red-100 { background-color: $red-100 !important; }
+.bg-red-200 { background-color: $red-200 !important; }
+.bg-red-300 { background-color: $red-300 !important; }
+.bg-red-400 { background-color: $red-400 !important; }
+.bg-red-500 { background-color: $red-500 !important; }
+.bg-red-600 { background-color: $red-600 !important; }
+.bg-red-700 { background-color: $red-700 !important; }
 
 // Default Colors
 // ----------------------------------------------------------
