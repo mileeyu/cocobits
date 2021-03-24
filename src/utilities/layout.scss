@@ -155,6 +155,7 @@
 
         // Responsive flex order 
         // Change the order of flex items
+        .flex-#{$breakpoint}-order-n1 { order: -1 !important; }
         .flex-#{$breakpoint}-order-1 { order: 1 !important; }
         .flex-#{$breakpoint}-order-2 { order: 2 !important; }
         .flex-#{$breakpoint}-order-none { order: inherit !important; }
@@ -179,6 +180,7 @@
 .flex-shrink-0 { flex-shrink: 0; }
 
 // Fixed flex order 
+.flex-order-n1 { order: -1; }
 .flex-order-1 { order: 1; }
 .flex-order-2 { order: 2; }
 .flex-order-none { order: inherit; }
