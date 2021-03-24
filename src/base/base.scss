@@ -41,12 +41,18 @@ a {
     &:hover {
         color: $color-text-link;
     }
+    img {
+        display: block; /* eliminates bottom padding of image */
+    }
 }
 
 p {
     margin-top: 0.875em;
     margin-bottom: 1em;
     line-height: inherit;
+    &:first-child {
+        margin-top: 0; /* removes top margin for first paragraph element */
+    }
 }
 
 blockquote {
