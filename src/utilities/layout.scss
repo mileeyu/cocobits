@@ -495,10 +495,14 @@
 .width-fit { max-width: 100% !important; }
 // Set width to 100%
 .width-full { width: 100% !important; }
+// Uses available space to fit content width
+.width-fit-content { width: fit-content !important; }
 // Max height 100%
 .height-fit { max-height: 100% !important; }
 // Set width to 100%
 .height-full { height: 100% !important; }
+// Uses available space fit content height
+.height-fit-content { height: fit-content !important; }
 
 @each $key, $size in $size-map {
     // Fixed height scale
