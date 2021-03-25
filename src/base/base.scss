@@ -41,14 +41,20 @@ a {
     &:hover {
         color: $color-text-link;
     }
+    /* eliminates bottom padding of image */
     img {
-        display: block; /* eliminates bottom padding of image */
+        display: block;
     }
 }
 
 p {
     margin-bottom: 1em;
     line-height: inherit;
+}
+
+/* Eliminates margins when only child of parent */
+p:only-child {
+    margin-bottom: 0;
 }
 
 blockquote {

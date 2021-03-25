@@ -314,6 +314,7 @@
         // Aligns elements along main axis by adjusting gap size
         .d-#{$breakpoint}-justify-start { justify-content: start !important; }
         .d-#{$breakpoint}-justify-end { justify-content: end !important; }
+        .d-#{$breakpoint}-justify-flex-end { justify-content: flex-end !important; }
         .d-#{$breakpoint}-justify-center { justify-content: center !important; }
         .d-#{$breakpoint}-justify-between { justify-content: space-between !important; }
         .d-#{$breakpoint}-justify-around { justify-content: space-around !important; }
@@ -363,6 +364,7 @@
 // Fixed display justify content
 .d-justify-start { justify-content: start; }
 .d-justify-end { justify-content: end; }
+.d-justify-flex-end { justify-content: flex-end; }
 .d-justify-center { justify-content: center; }
 .d-justify-between { justify-content: space-between; }
 .d-justify-around { justify-content: space-around; }
