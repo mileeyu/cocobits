@@ -4,6 +4,17 @@
   * Licensed under MIT
   */
 
+document.addEventListener('DOMContentLoaded', function () {
+  tab()
+  accordion()
+  carousel()
+})
+
+// Load carousel on window resize
+window.addEventListener('resize', (event) => {
+  carousel()
+}, false)
+
 /* TAB */
 function tab() {
   // Initialize variables

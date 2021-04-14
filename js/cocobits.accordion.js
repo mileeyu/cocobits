@@ -1,5 +1,9 @@
 /*! ACCORDION */
 
+document.addEventListener('DOMContentLoaded', function () {
+  accordion()
+})
+
 function accordion() {
   const accButtons = document.querySelectorAll('.accordion'),
         py = 48
