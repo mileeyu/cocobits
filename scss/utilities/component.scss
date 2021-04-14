@@ -1,0 +1,263 @@
+@import '../variables/layout.scss';
+@import '../variables/content.scss';
+@import '../variables/color.scss';
+
+// Button
+// ----------------------------------------------------------
+.btn-sm {
+  height: $size-6;
+  padding-left: $size-4;
+  padding-right: $size-4;
+}
+
+.btn-md {
+  height: $size-7;
+  padding-left: $size-5;
+  padding-right: $size-5;
+}
+
+.btn-lg {
+  height: $size-8;
+  padding-left: $size-6;
+  padding-right: $size-6;
+}
+
+.btn-primary {
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--btn-primary-border-radius, $border-radius-2);
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--btn-primary-text, $white);
+  background: var(--btn-primary-bg, $blue-300);
+  transition: background 0.3s ease color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  border: none;
+  color: var(--btn-primary-text-hover, $white);
+  background: var(--btn-primary-bg-hover, $blue-500);
+  transition: background 0.3s ease color 0.3 ease;
+}
+
+.btn-secondary {
+  display: grid;
+  align-items: center;
+  cursor: pointer;
+  border: var(--btn-secondary-border, 1px solid $gray-500);
+  border-radius: var(--btn-secondary-border-radius, $border-radius-2);
+  font-size: 14px;  
+  background: transparent;
+  color: var(--btn-secondary-text, $gray-500);
+  transition: border .3s background .3s;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active {
+  background: var(--btn-secondary-bg-hover, $gray-500);
+  color: var(--btn-secondary-text-hover, $white);
+  transition: all .3s;
+}
+
+.link-underline {
+  text-decoration: none;
+  padding-bottom: $spacer-1;
+  color: var(--link-underline-text, $gray-500);
+  border-bottom: var(--link-underline-border, 2px solid $gray-500);
+  transition: color .3s border-bottom .3s;
+}
+
+.link-underline:hover,
+.link-underline:active {
+  color: var(--link-underline-text-hover, $blue-300);
+  border-bottom: var(--link-underline-border-hover, 2px solid $blue-300);
+  transition: color .3s border-bottom .3s;
+}
+
+/* Input components */
+.input-sm {
+  height: $size-6;
+  padding-left: $size-3;
+  padding-right: $size-3;
+  font-size: 14px;
+  border: $border;
+  border-radius: $border-radius-2;
+  color: $gray-500;
+}
+
+.input-md {
+  height: $size-7;
+  padding-left: $size-3;
+  padding-right: $size-3;
+  font-size: 14px;
+  border: $border;
+  border-radius: $border-radius-2;
+  color: $gray-500;
+}
+
+.input-lg {
+  height: $size-8;
+  padding-left: $size-3;
+  padding-right: $size-3;
+  font-size: 14px;
+  border: $border;
+  border-radius: $border-radius-2;
+  color: $gray-500;
+}
+
+/* Tab component */
+.tab-menu {
+  display: flex;
+  flex-direction: row;
+  padding: $spacer-3 0;
+  overflow: auto;
+}
+.tab-menu a {
+  text-decoration: none;
+  padding-bottom: $spacer-1;
+  font-size: 14px;
+  font-weight: normal;
+  white-space: nowrap;
+}
+.tab-menu a:hover {
+  color: var(--tab-menu, $blue-300);
+}
+.tab-menu a:not(:last-child) {
+  margin-right: $spacer-4;
+}
+.content--visible {
+  color: var(--tab-menu, $blue-300);
+  border-bottom: var(--tab-menu-border-bottom, 2px solid $blue-300);
+}
+.tab-contents {
+}
+
+/* Accordion component */
+.accordion {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: $spacer-3;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  background-color: var(--accordion-bg, $gray-100);
+  transition: 0.4s;
+}
+.accordion:hover,
+.accordion-active {
+  background-color: var(--accordion-bg-active, $gray-200);
+}
+.accordion-content {
+  max-height: 0;
+  padding: 0px $spacer-3;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+.plus {
+  position: relative;
+  margin-left: auto;
+  display: block;
+  width: $size-4;
+  height: $size-4;
+  cursor: pointer;
+}
+.plus:before, .plus:after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: ' ';
+  height: $size-4;
+  width: 1px;
+  background-color: #333;
+}
+.plus:before {
+  transform: rotate(90deg);
+  transition: transform .3s ease;
+}
+.plus:after {
+  transform: rotate(var(--plus-after, 0deg));
+  transition: transform .2s ease;
+}
+
+/* Carousel component */
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+.slide-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  /* overflow: hidden; */
+  align-items: center;
+}
+.slide {
+  display: block;
+  width: 100%;
+}
+.animate-transition { transition: transform 0.3s ease-out; }
+
+.slide-prev { 
+  position: absolute;
+  left: 0;
+  z-index: 1000;
+  cursor: pointer;
+  border: var(--arrow-border, 1px solid $gray-300);
+  border-width: var(--arrow-border-width, 0 $size-1 $size-1 0);
+  width: var(--arrow-width, $size-4);
+  height: var(--arrow-height, $size-4);
+  top: var(--slide-controller-center, 50%);
+  transform: translateY(50%);
+  transition: border 0.3s ease;
+  transform: rotate(135deg); 
+}
+.slide-next { 
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+  cursor: pointer;
+  border: var(--arrow-border, 1px solid $gray-300);
+  border-width: var(--arrow-border-width, 0 $size-1 $size-1 0);
+  width: var(--arrow-width, $size-4);
+  height: var(--arrow-height, $size-4);
+  top: var(--slide-controller-center, 50%);
+  transform: translateY(50%);
+  transition: border 0.3s ease;
+  transform: rotate(-45deg); 
+}
+
+.slide-prev:hover,
+.slide-next:hover {
+  border: var(--arrow-border-hover, 1px solid $gray-400);
+  border-width: var(--arrow-border-width, 0 $size-1 $size-1 0);
+  transition: all 0.3s ease;
+}
+
+.slide-nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: $spacer-3 0;
+}
+.slide-nav {
+  cursor: pointer;
+  width: var(--slide-nav-width, $size-4);
+  height: var(--slide-nav-height, $size-4);
+  border-radius: var(--slide-nav-border-radius, 50%);
+  background: var(--slide-nav-bg, $gray-200);
+  transition: background 0.2s ease;
+}
+.slide-nav:not(:last-child) {
+  margin-right: $size-3;
+}
+.slide-nav--active {
+  background: var(--slide-nav-bg--active, $gray-400);
+  transition: background 0.2s ease;
+}

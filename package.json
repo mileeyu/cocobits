@@ -5,9 +5,12 @@
     "author": "Milee Yu",
     "license": "MIT",
     "sass": "index.scss",
+    "main": "cocobits.js",
     "files": [
-        "src",
-        "css"
+        "dist",
+        "img",
+        "scss",
+        "js"
     ],
     "repository": "https://github.com/mileeme/cocobits.git",
     "keywords": [

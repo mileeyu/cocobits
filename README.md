@@ -38,7 +38,7 @@ $ npm install cocobits
 ### Quick Start
 Include the following link in the head of your base HTML file:
 ```HTML
-<link rel="stylesheet" href="https://unpkg.com/cocobits/css/cocobits.min.css">
+<link rel="stylesheet" href="https://unpkg.com/cocobits/dist/css/cocobits.min.css">
 ```
 
 ## Documentation

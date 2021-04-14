@@ -490,24 +490,32 @@
     }
 }
 
-// Fixed width and height
+// Fixed max width and height
 // Max width 100%
 .width-fit { max-width: 100% !important; }
-// Set width to 100%
-.width-full { width: 100% !important; }
 // Uses available space to fit content width
 .width-fit-content { width: fit-content !important; }
+// Set width to 100%
+.width-full { width: 100% !important; }
+
 // Max height 100%
 .height-fit { max-height: 100% !important; }
-// Set width to 100%
-.height-full { height: 100% !important; }
 // Uses available space fit content height
 .height-fit-content { height: fit-content !important; }
+// Set width to 100%
+.height-full { height: 100% !important; }
 
 @each $key, $size in $size-map {
     // Fixed height scale
     .height-#{$key} { height: $size; }
 }
+
+// Fixed min width
+// Useful for creating sliders with overflow hidden
+.width-min-sm { min-width: 544px !important; }
+.width-min-md { min-width: 768px !important; }
+.width-min-lg { min-width: 992px !important; }
+.width-min-xl { min-width: 1200px !important; }
 
 // Space (margin, padding) 
 // ----------------------------------------------------------
