@@ -1,9 +1,5 @@
 /*! TAB */
 
-document.addEventListener('DOMContentLoaded', function () {
-  tab()
-})
-
 function tab() {
   // Initialize variables
   const tabLinks = document.querySelector('.tab-menu').children,

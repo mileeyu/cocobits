@@ -1,14 +1,5 @@
 /*! CAROUSEL */
 
-document.addEventListener('DOMContentLoaded', function () {
-  carousel()
-})
-
-// Load carousel on window resize
-window.addEventListener('resize', (event) => {
-  carousel()
-}, false)
-
 function carousel() {
   // Initialize variables
   let slideContainer = document.querySelector('.slide-container'),
@@ -197,5 +188,8 @@ function carousel() {
     }
   }
 }
+
+// Load carousel on window resize
+window.addEventListener('resize', () => { carousel() }, false)
 
 module.exports = { carousel }

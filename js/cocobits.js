@@ -4,16 +4,6 @@
   * Licensed under MIT
   */
 
-document.addEventListener('DOMContentLoaded', function () {
-  tab()
-  accordion()
-  carousel()
-})
-
-// Load carousel on window resize
-window.addEventListener('resize', (event) => {
-  carousel()
-}, false)
 
 /* TAB */
 function tab() {
@@ -274,6 +264,13 @@ function carousel() {
   }
 }
 
-module.exports = { tab }
-module.exports = { accordion }
-module.exports = { carousel }
+document.addEventListener('DOMContentLoaded', () => {
+  tab()
+  accordion()
+  carousel()
+})
+
+// Load carousel on window resize
+window.addEventListener('resize', () => { carousel() }, false)
+
+module.exports = { tab, accordion, carousel }
