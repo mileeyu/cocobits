@@ -77,7 +77,8 @@
   transition: color .3s border-bottom .3s;
 }
 
-/* Input components */
+// Input
+// ----------------------------------------------------------
 .input-sm {
   height: $size-6;
   padding-left: $size-3;
@@ -108,7 +109,8 @@
   color: $gray-500;
 }
 
-/* Tab component */
+// Tab
+// ----------------------------------------------------------
 .tab-menu {
   display: flex;
   flex-direction: row;
@@ -135,7 +137,8 @@
 .tab-contents {
 }
 
-/* Accordion component */
+// Accordion
+// ----------------------------------------------------------
 .accordion {
   cursor: pointer;
   display: flex;
@@ -186,7 +189,8 @@
   transition: transform .2s ease;
 }
 
-/* Carousel component */
+// Carousel
+// ----------------------------------------------------------
 .carousel {
   position: relative;
   overflow: hidden;
@@ -195,7 +199,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  /* overflow: hidden; */
   align-items: center;
 }
 .slide {
@@ -260,4 +263,19 @@
 .slide-nav--active {
   background: var(--slide-nav-bg--active, $gray-400);
   transition: background 0.2s ease;
+}
+
+// ScrollX
+// ----------------------------------------------------------
+.scrollX {
+  cursor: grab;
+  overflow-x: scroll;
+}
+.scrollX.scrollX--active {
+  cursor: grabbing;
+  user-select: none;
+}
+.scrollX::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
