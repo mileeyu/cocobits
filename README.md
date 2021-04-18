@@ -40,6 +40,10 @@ Include the following link in the head of your base HTML file:
 ```HTML
 <link rel="stylesheet" href="https://unpkg.com/cocobits/dist/css/cocobits.min.css">
 ```
+To use the JavaScript enabled component utility classes, include the following link before the <code>&lt;/body&gt;</code> tag of your base HTML file:
+```HTML
+<script src="https://unpkg.com/cocobits/dist/js/cocobits.min.js"></script>
+```     
 
 ## Documentation
 

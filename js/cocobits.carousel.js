@@ -8,7 +8,7 @@ function carousel() {
         navs = document.querySelectorAll('.slide-nav'),
         slidesCount = slides.length,
         slideWidth = slides[0].offsetWidth,
-        slideHeight = slides[0].scrollHeight,
+        slideHeight = slides[0].clientHeight,
         lastSlidePos = slideContainer - slideWidth,
         lastIndex = slidesCount - 1,
         startX = undefined,
@@ -23,7 +23,10 @@ function carousel() {
     // Reset carousel on page load or window resize
     slideContainer.classList.remove('animate-transition')
     slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
-    slideContainer.style.height = `${slideHeight}px`
+    if (slideHeight) {
+      slideContainer.style.height = `${slideHeight}px`
+    } else { }
+
     if (navs[0]) { navs[0].classList.add('slide-nav--active') }
 
     if (prev && next) {
