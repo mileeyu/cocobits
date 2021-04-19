@@ -1,6 +1,5 @@
 /*! TAB */
 
-/* TAB */
 function tab() {
   if (document.querySelector('.tab-menu')) {
     // Initialize variables

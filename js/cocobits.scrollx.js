@@ -1,4 +1,5 @@
 /*! SCROLLX */
+
 function scrollX() {
   if (document.querySelector('.scrollX')) {
     const container = document.querySelector('.scrollX'),
