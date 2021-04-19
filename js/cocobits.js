@@ -4,6 +4,15 @@
   * Licensed under MIT
   */
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.querySelector('.tab-menu')) { tab() }
+  if (document.querySelector('.accordion')) { accordion() }
+  if (document.querySelector('.slide-container')) { carousel() }
+  if (document.querySelector('.scrollX')) { scrollX() }
+})
+
+// Load carousel on window resize
+window.addEventListener('resize', () => { carousel() }, false)
 
 /* TAB */
 function tab() {
@@ -77,10 +86,10 @@ function accordion() {
 
 /* Carousel */
 function carousel() {
+  console.log("carousel")
   // Initialize variables
   let slideContainer = document.querySelector('.slide-container'),
       slides = document.querySelectorAll('.slide'),
-      navs = document.querySelectorAll('.slide-nav'),
       slidesCount = slides.length,
       slideHeight = slides[0].offsetHeight,
       slideWidth = slides[0].offsetWidth,
@@ -92,6 +101,7 @@ function carousel() {
       index = 0,
       longTouch = false,
       mouseMoving = false,
+      navButtons = document.querySelectorAll('.slide-nav'),
       prev = document.querySelector('.slide-prev'),
       next = document.querySelector('.slide-next')
 
@@ -104,7 +114,12 @@ function carousel() {
   slideContainer.classList.remove('animate-transition')
   slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
 
-  if (navs[0]) { navs[0].classList.add('slide-nav--active') }
+  if (navButtons) { 
+    navButtons[0].classList.add('slide-nav--active') 
+    console.log(navButtons)
+  } else {
+    console.log("none")
+  }
 
   if (prev && next) {
     prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
@@ -128,8 +143,8 @@ function carousel() {
     prev.addEventListener('click', (event) => { shiftSlide(event, 'prev') }, false)
     next.addEventListener('click', (event) => { shiftSlide(event, 'next') }, false)
   }
-  if (navs) {
-    navs.forEach((nav, i) => {
+  if (navButtons) {
+    navButtons.forEach((nav, i) => {
       let clickIndex = i
       nav.addEventListener('click', (event) => {
         navigateToSlide(clickIndex, null)
@@ -201,7 +216,7 @@ function carousel() {
     slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
 
     // Move to new nav position
-    if (navs[0]) {
+    if (navButtons[0]) {
       let slideIndex = index
       navigateToSlide(null, slideIndex)
     }
@@ -223,7 +238,7 @@ function carousel() {
     slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
 
     // Move to new nav position
-    if (navs[0]) {
+    if (navButtons[0]) {
       let slideIndex = index
       navigateToSlide(null, slideIndex)
     }
@@ -237,18 +252,18 @@ function carousel() {
       slideContainer.classList.add('animate-transition')
       slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
       // Move to new nav position
-      navs.forEach(nav => {
+      navButtons.forEach(nav => {
         nav.classList.remove('slide-nav--active')
       })
-      navs[clickIndex].classList.add('slide-nav--active')
+      navButtons[clickIndex].classList.add('slide-nav--active')
     }
 
     // Move to new nav position
     if (slideIndex != null) {
-      navs.forEach(nav => {
+      navButtons.forEach(nav => {
         nav.classList.remove('slide-nav--active')
       })
-      navs[slideIndex].classList.add('slide-nav--active')
+      navButtons[slideIndex].classList.add('slide-nav--active')
     }
   }
 
@@ -352,14 +367,4 @@ function scrollX() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelector('.tab-menu')) { tab() } else { return }
-  if (document.querySelector('.accordion')) { accordion() } else { return }
-  if (document.querySelector('.slide-container')) { carousel() } else { return }
-  if (document.querySelector('.scrollX')) { scrollX() } else { return }
-})
-
-// Load carousel on window resize
-window.addEventListener('resize', () => { carousel() }, false)
-
-module.exports = { tab, accordion, carousel }
+module.exports = { tab, accordion, carousel, scrollX }
