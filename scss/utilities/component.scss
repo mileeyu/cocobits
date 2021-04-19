@@ -203,7 +203,8 @@
 }
 .slide {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 .animate-transition { transition: transform 0.3s ease-out; }
 

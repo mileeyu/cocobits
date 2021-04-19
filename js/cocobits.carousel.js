@@ -7,8 +7,8 @@ function carousel() {
         slides = document.querySelectorAll('.slide'),
         navs = document.querySelectorAll('.slide-nav'),
         slidesCount = slides.length,
+        slideHeight = slides[0].offsetHeight,
         slideWidth = slides[0].offsetWidth,
-        slideHeight = slides[0].clientHeight,
         lastSlidePos = slideContainer - slideWidth,
         lastIndex = slidesCount - 1,
         startX = undefined,
@@ -20,12 +20,15 @@ function carousel() {
         prev = document.querySelector('.slide-prev'),
         next = document.querySelector('.slide-next')
 
-    // Reset carousel on page load or window resize
+    // Set carousel height based on first slide
+    if (slideHeight === 0) {
+      requestAnimationFrame(carousel)
+    }
+    slideContainer.style.height = `${slideHeight}px`
+
+    // Remove animation
     slideContainer.classList.remove('animate-transition')
     slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
-    if (slideHeight) {
-      slideContainer.style.height = `${slideHeight}px`
-    } else { }
 
     if (navs[0]) { navs[0].classList.add('slide-nav--active') }
 
