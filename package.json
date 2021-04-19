@@ -1,6 +1,6 @@
 {
     "name": "cocobits",
-    "version": "2.6.1",
+    "version": "2.6.2",
     "description": "Cocobits is a responsive CSS foundational system to build elegant web applications. Influenced by object-oriented CSS principles and functional CSS, interchangeable utility classes allow flexibility and consistency for any web application.",
     "author": "Milee Yu",
     "license": "MIT",
