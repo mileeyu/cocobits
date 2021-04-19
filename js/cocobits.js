@@ -86,7 +86,6 @@ function accordion() {
 
 /* Carousel */
 function carousel() {
-  console.log("carousel")
   // Initialize variables
   let slideContainer = document.querySelector('.slide-container'),
       slides = document.querySelectorAll('.slide'),
@@ -114,12 +113,7 @@ function carousel() {
   slideContainer.classList.remove('animate-transition')
   slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
 
-  if (navButtons) { 
-    navButtons[0].classList.add('slide-nav--active') 
-    console.log(navButtons)
-  } else {
-    console.log("none")
-  }
+  if (navButtons) { navButtons[0].classList.add('slide-nav--active') }
 
   if (prev && next) {
     prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
