@@ -1,7 +1,6 @@
 /*! CAROUSEL */
 
 function carousel() {
-  console.log("carousel")
   // Initialize variables
   let slideContainer = document.querySelector('.slide-container'),
       slides = document.querySelectorAll('.slide'),
@@ -20,21 +19,17 @@ function carousel() {
       prev = document.querySelector('.slide-prev'),
       next = document.querySelector('.slide-next')
 
-  // Set carousel height based on first slide
-  if (slideHeight === 0) {
+  // Get slide height once image fully loads
+  if (slides[0] && slideHeight === 0) {
     requestAnimationFrame(carousel)
   }
   slideContainer.style.height = `${slideHeight}px`
+  
   // Reset carousel on page load or window resize
   slideContainer.classList.remove('animate-transition')
   slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
 
-  if (navButtons) { 
-    navButtons[0].classList.add('slide-nav--active') 
-    console.log(navButtons)
-  } else {
-    console.log("none")
-  }
+  if (navButtons) { navButtons[0].classList.add('slide-nav--active') }
 
   if (prev && next) {
     prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
@@ -199,5 +194,8 @@ function carousel() {
     }
   }
 }
+
+// Load carousel on window resize
+window.addEventListener('resize', () => { carousel() }, false)
 
 module.exports = { carousel }

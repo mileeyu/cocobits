@@ -105,7 +105,7 @@ function carousel() {
       next = document.querySelector('.slide-next')
 
   // Set carousel height based on first slide
-  if (slideHeight === 0) {
+  if (slides[0] && slideHeight === 0) {
     requestAnimationFrame(carousel)
   }
   slideContainer.style.height = `${slideHeight}px`
