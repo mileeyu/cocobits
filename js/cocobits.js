@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('.scrollX')) { scrollX() }
 })
 
-// Load carousel on window resize
-window.addEventListener('resize', () => { carousel() }, false)
-
 /* TAB */
 function tab() {
   // Initialize variables
@@ -87,33 +84,41 @@ function accordion() {
 /* Carousel */
 function carousel() {
   // Initialize variables
-  let slideContainer = document.querySelector('.slide-container'),
-      slides = document.querySelectorAll('.slide'),
-      slidesCount = slides.length,
-      slideHeight = slides[0].offsetHeight,
-      slideWidth = slides[0].offsetWidth,
-      lastIndex = slidesCount - 1,
-      [startX, moveX] = [0, 0],
-      distanceX = 0,
-      index = 0,
-      mouseMoving = false,
-      navButtons = document.querySelectorAll('.slide-nav'),
-      prev = document.querySelector('.slide-prev'),
-      next = document.querySelector('.slide-next')
+  let carouselContainer = document.querySelector('.carousel'),
+    slideContainer = document.querySelector('.slide-container'),
+    slides = document.querySelectorAll('.slide'),
+    slidesCount = slides.length,
+    lastIndex = slidesCount - 1,
+    [startX, moveX] = [0, 0],
+    distanceX = 0,
+    index = 0,
+    mouseMoving = false,
+    navButtons = document.querySelectorAll('.slide-nav'),
+    prev = document.querySelector('.slide-prev'),
+    next = document.querySelector('.slide-next')
 
-  // Wait till first image is fully loaded
-  if (slides[0] && slideHeight === 0) {
+  // Resize carousel slides for each window resize
+  carouselContainer.addEventListener('resize', function () {
+    requestAnimationFrame(carousel)
+  })
+
+  if (slides[0] && slides[0].offsetHeight === 0) {
     requestAnimationFrame(carousel)
   }
-  // Set width and height of each slide
+
+  // Set carousel height and width
+  let [slideWidth, slideHeight] = [carouselContainer.offsetWidth, slides[0].offsetHeight]
+
+  // Set width of each slide
   slides.forEach(slide => {
     slide.style.width = `${slideWidth}px`
   })
-  // Set the container height and width
-  slideContainer.style.height = `${slideHeight}px`
+
+  // Set the slide container height and width
   slideContainer.style.width = `${slidesCount * slideWidth}px`
-  
-  // Reset carousel on page load or window resize
+  slideContainer.style.height = `${slideHeight}px`
+
+  // Reset slide container on page load or window resize
   slideContainer.classList.remove('animate-transition')
   slideContainer.style.transform = 'translateX(0px)'
 
@@ -161,9 +166,9 @@ function carousel() {
       startX = event.touches[0].clientX
     } else if (event.type == 'mousedown') {
       mouseMoving = true
-      startX = event.clientX 
+      startX = event.clientX
       slideContainer.onmousemove = move
-      slideContainer.onmouseup = end 
+      slideContainer.onmouseup = end
     }
   }
 
@@ -191,9 +196,9 @@ function carousel() {
 
     // Calc distance swiped 
     let absMove = Math.abs(index * slideWidth - distanceX)
-    
+
     if (event.type == 'mouseup' || event.type == 'touchend') {
-      if (absMove > 100) {
+      if (absMove > 50) {
         if (startX > moveX && index < lastIndex) {
           index++
         } else if (startX < moveX && index > 0) {
