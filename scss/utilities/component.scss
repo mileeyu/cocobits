@@ -252,8 +252,8 @@
 }
 .slide-nav {
   cursor: pointer;
-  width: var(--slide-nav-width, $size-4);
-  height: var(--slide-nav-height, $size-4);
+  width: var(--slide-nav-width, $size-3);
+  height: var(--slide-nav-height, $size-3);
   border-radius: var(--slide-nav-border-radius, 50%);
   background: var(--slide-nav-bg, $gray-200);
   transition: background 0.2s ease;
@@ -271,6 +271,8 @@
 .scrollX {
   cursor: grab;
   overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .scrollX.scrollX--active {
   cursor: grabbing;
@@ -279,4 +281,5 @@
 .scrollX::-webkit-scrollbar {
   width: 0;
   background: transparent;
+  display: none;
 }

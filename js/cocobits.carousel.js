@@ -27,10 +27,10 @@ function carousel() {
   
   // Reset carousel on page load or window resize
   slideContainer.classList.remove('animate-transition')
-  slideContainer.style.transform = 'translate3d(0px, 0px, 0px)'
+  slideContainer.style.transform = 'translateX(0px)'
 
-  if (navButtons) { navButtons[0].classList.add('slide-nav--active') }
-
+  // Style navigation items if available
+  if (navButtons[0]) { navButtons[0].classList.add('slide-nav--active') }
   if (prev && next) {
     prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
     next.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
@@ -49,16 +49,17 @@ function carousel() {
   slideContainer.addEventListener('touchmove', (event) => { move(event) }, false)
   slideContainer.addEventListener('touchend', (event) => { end(event) }, false)
   slideContainer.addEventListener('transitionend', (event) => { transition(event)}, false)
-  if (prev && next) {
+
+  if (prev && next || navButtons[0] && (prev && next)) {
     prev.addEventListener('click', (event) => { shiftSlide(event, 'prev') }, false)
     next.addEventListener('click', (event) => { shiftSlide(event, 'next') }, false)
   }
-  if (navButtons) {
+  if (navButtons[0]) {
     navButtons.forEach((nav, i) => {
       let clickIndex = i
       nav.addEventListener('click', (event) => {
         navigateToSlide(clickIndex, null)
-        transition(event)
+        if (prev && next) { transition(event) }
       }, false)
     })
   }
@@ -94,9 +95,7 @@ function carousel() {
       // Calc container touch movement
       distanceX = (index * slideWidth) + (startX - moveX)
       // Limit container from moving beyond last slide
-      if (moveX < lastSlidePos) {
-        slideContainer.style.transform = `translate3d(-${moveX}px, 0, 0)`
-      }
+      slideContainer.style.transform = `translateX(-${distanceX}px)`
     } else if (mouseMoving) {
       moveX = event.clientX
       // Calc container mouse movement
@@ -113,9 +112,9 @@ function carousel() {
     
     if (event.type == 'mouseup' || event.type == 'touchend') {
       if (absMove > 100 || longTouch == false) {
-        if (distanceX > (index * slideWidth) && index < lastIndex) {
+        if (startX > moveX && index < lastIndex) {
           index++
-        } else if (distanceX < (index * slideWidth) && index > 0) {
+        } else if (startX < moveX && index > 0) {
           index--
         }
       }
@@ -123,7 +122,7 @@ function carousel() {
     mouseMoving = false
     // Move and animate container
     slideContainer.classList.add('animate-transition')
-    slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
+    slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
 
     // Move to new nav position
     if (navButtons[0]) {
@@ -145,7 +144,7 @@ function carousel() {
     }
     // Move and animate container
     slideContainer.classList.add('animate-transition')
-    slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
+    slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
 
     // Move to new nav position
     if (navButtons[0]) {
@@ -160,7 +159,7 @@ function carousel() {
       index = clickIndex
       // Move and animate container
       slideContainer.classList.add('animate-transition')
-      slideContainer.style.transform = `translate3d(-${index * slideWidth}px, 0, 0)`
+      slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
       // Move to new nav position
       navButtons.forEach(nav => {
         nav.classList.remove('slide-nav--active')
