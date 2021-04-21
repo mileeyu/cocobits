@@ -7,23 +7,26 @@ function carousel() {
       slidesCount = slides.length,
       slideHeight = slides[0].offsetHeight,
       slideWidth = slides[0].offsetWidth,
-      lastSlidePos = slideContainer - slideWidth,
       lastIndex = slidesCount - 1,
-      startX = undefined,
-      moveX = undefined,
-      distanceX = undefined,
+      [startX, moveX] = [0, 0],
+      distanceX = 0,
       index = 0,
-      longTouch = false,
       mouseMoving = false,
       navButtons = document.querySelectorAll('.slide-nav'),
       prev = document.querySelector('.slide-prev'),
       next = document.querySelector('.slide-next')
 
-  // Get slide height once image fully loads
+  // Wait till first image is fully loaded
   if (slides[0] && slideHeight === 0) {
     requestAnimationFrame(carousel)
   }
+  // Set width and height of each slide
+  slides.forEach(slide => {
+    slide.style.width = `${slideWidth}px`
+  })
+  // Set the container height and width
   slideContainer.style.height = `${slideHeight}px`
+  slideContainer.style.width = `${slidesCount * slideWidth}px`
   
   // Reset carousel on page load or window resize
   slideContainer.classList.remove('animate-transition')
@@ -45,10 +48,10 @@ function carousel() {
 
   // EventListeners
   slideContainer.onmousedown = start
-  slideContainer.addEventListener('touchstart', (event) => { start(event) }, false)
-  slideContainer.addEventListener('touchmove', (event) => { move(event) }, false)
-  slideContainer.addEventListener('touchend', (event) => { end(event) }, false)
-  slideContainer.addEventListener('transitionend', (event) => { transition(event)}, false)
+  slideContainer.addEventListener('touchstart', start, false)
+  slideContainer.addEventListener('touchmove', move, false)
+  slideContainer.addEventListener('touchend', end, false)
+  slideContainer.addEventListener('transitionend', transition, false)
 
   if (prev && next || navButtons[0] && (prev && next)) {
     prev.addEventListener('click', (event) => { shiftSlide(event, 'prev') }, false)
@@ -69,12 +72,6 @@ function carousel() {
     event.preventDefault()
 
     if (event.type == 'touchstart') {
-      // Test for flick
-      longTouch = false 
-      setTimeout(function () {
-        slideContainer.longTouch = true
-      }, 250)
-
       // Get initial touch position
       startX = event.touches[0].clientX
     } else if (event.type == 'mousedown') {
@@ -111,7 +108,7 @@ function carousel() {
     let absMove = Math.abs(index * slideWidth - distanceX)
     
     if (event.type == 'mouseup' || event.type == 'touchend') {
-      if (absMove > 100 || longTouch == false) {
+      if (absMove > 100) {
         if (startX > moveX && index < lastIndex) {
           index++
         } else if (startX < moveX && index > 0) {
