@@ -6,6 +6,8 @@ function carousel() {
     slideContainer = document.querySelector('.slide-container'),
     slides = document.querySelectorAll('.slide'),
     slidesCount = slides.length,
+    slideWidth = carouselContainer.offsetWidth,
+    slideHeight = slideContainer.offsetHeight,
     lastIndex = slidesCount - 1,
     [startX, moveX] = [0, 0],
     distanceX = 0,
@@ -15,17 +17,9 @@ function carousel() {
     prev = document.querySelector('.slide-prev'),
     next = document.querySelector('.slide-next')
 
-  // Resize carousel slides for each window resize
-  carouselContainer.addEventListener('resize', function () {
-    requestAnimationFrame(carousel)
-  })
-
-  if (slides[0] && slides[0].offsetHeight === 0) {
+  if (slides[0] && slideHeight === 0) {
     requestAnimationFrame(carousel)
   }
-
-  // Set carousel height and width
-  let [slideWidth, slideHeight] = [carouselContainer.offsetWidth, slides[0].offsetHeight]
 
   // Set width of each slide
   slides.forEach(slide => {
@@ -198,5 +192,10 @@ function carousel() {
     }
   }
 }
+
+// Resize carousel slides for each window resize
+window.addEventListener('resize', function () {
+  carousel()
+})
 
 module.exports = { carousel }
