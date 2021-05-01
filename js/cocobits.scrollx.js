@@ -2,42 +2,45 @@
 
 function scrollX() {
   if (document.querySelector('.scrollX')) {
-    const container = document.querySelector('.scrollX'),
-        containerLeft = container.offsetLeft
-    
+    const containers = document.querySelectorAll('.scrollX')
+
     let scrollXActive = false,
-        startX,
-        scrollLeft,
-        distanceX,
-        moveX,
-        velX,
-        momentumID
+      startX,
+      scrollLeft,
+      distanceX,
+      moveX,
+      velX,
+      momentumID
 
-    container.addEventListener('mousedown', start) 
-    container.addEventListener('mousemove', move)
+    containers.forEach(container => {
+      container.addEventListener('mousedown', () => { start(container, event) })
+      container.addEventListener('mousemove', () => { move(container, event) })
 
-    container.addEventListener('mouseup', () => {
-      scrollXActive = false
-      container.classList.remove('scrollX--active')
-      momentumStart()
-    })
-    container.addEventListener('mouseleave', () => {
-      scrollXActive = false
-      container.classList.remove('scrollX--active')
-      // Disable anchors
-      if (container.querySelectorAll('a')) {
-        container.querySelectorAll('a').forEach(link => {
-          link.classList.remove('disable-pointer')
-        })
-      }
-    })
-    container.addEventListener('wheel', (event) => {
-      momentumEnd()
+      container.addEventListener('mouseup', () => {
+        scrollXActive = false
+        container.classList.remove('scrollX--active')
+        momentumStart(container)
+      })
+      container.addEventListener('mouseleave', () => {
+        scrollXActive = false
+        container.classList.remove('scrollX--active')
+        // Disable anchors
+        if (container.querySelectorAll('a')) {
+          container.querySelectorAll('a').forEach(link => {
+            link.classList.remove('disable-pointer')
+          })
+        }
+      })
+      container.addEventListener('wheel', (event) => {
+        momentumEnd()
+      })
     })
 
     // Start 
-    function start(event) {
+    function start(container, event) {
       event.preventDefault()
+
+      let containerLeft = container.offsetLeft
       // Allow mouse click and drag
       scrollXActive = true
       container.classList.add('scrollX--active')
@@ -47,10 +50,12 @@ function scrollX() {
       scrollLeft = container.scrollLeft
       momentumEnd()
     }
-    
+
     // Move
-    function move(event) {
-      if (!scrollXActive) return 
+    function move(container, event) {
+      let containerLeft = container.offsetLeft
+
+      if (!scrollXActive) return
       event.preventDefault()
 
       distanceX = event.clientX - containerLeft
@@ -63,21 +68,25 @@ function scrollX() {
     }
 
     // Momentum
-    function momentumStart() {
+    function momentumStart(container) {
       momentumEnd()
-      momentumID = requestAnimationFrame(momentumLoop)
+      momentumID = requestAnimationFrame(function () {
+        momentumLoop(container)
+      })
     }
 
     function momentumEnd() {
       cancelAnimationFrame(momentumID)
     }
 
-    function momentumLoop() {
-      container.scrollLeft += velX 
+    function momentumLoop(container) {
+      container.scrollLeft += velX
       velX *= 0.95
 
       if (Math.abs(velX) > 0.75) {
-        momentumID = requestAnimationFrame(momentumLoop)
+        momentumID = requestAnimationFrame(function () {
+          momentumLoop(container)
+        })
       }
     }
   } else { return }

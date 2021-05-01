@@ -213,6 +213,12 @@
 .grid-flow-row-dense { grid-auto-flow: row dense; }
 .grid-flow-col-dense { grid-auto-flow: column dense; }
 
+// Fixed grid auto rows and columns
+.grid-auto-rows-min { grid-auto-rows: min-content; }
+.grid-auto-rows-max { grid-auto-rows: max-content; }
+.grid-auto-cols-min { grid-auto-columns: min-content; }
+.grid-auto-cols-max { grid-auto-columns: max-content; }
+
 // Grid Gap
 // ----------------------------------------------------------
 // Responsive grid gap

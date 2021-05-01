@@ -94,7 +94,7 @@ function carousel() {
     slides = document.querySelectorAll('.slide'),
     slidesCount = slides.length,
     slideWidth = carouselContainer.offsetWidth,
-    slideHeight = slideContainer.offsetHeight,
+    // slideHeight = slides[0].offsetHeight,
     lastIndex = slidesCount - 1,
     [startX, moveX] = [0, 0],
     distanceX = 0,
@@ -104,220 +104,226 @@ function carousel() {
     prev = document.querySelector('.slide-prev'),
     next = document.querySelector('.slide-next')
 
-  if (slides[0] && slideHeight === 0) {
+  if (slides[0] && !slides[0].offsetHeight) {
     requestAnimationFrame(carousel)
-  }
+  } else {
 
-  // Set width of each slide
-  slides.forEach(slide => {
-    slide.style.width = `${slideWidth}px`
-  })
+    let slideHeight = slides[0].offsetHeight
 
-  // Set the slide container height and width
-  slideContainer.style.width = `${slidesCount * slideWidth}px`
-  slideContainer.style.height = `${slideHeight}px`
-
-  // Reset slide container on page load or window resize
-  slideContainer.classList.remove('animate-transition')
-  slideContainer.style.transform = 'translateX(0px)'
-
-  // Style navigation items if available
-  if (navButtons[0]) { navButtons[0].classList.add('slide-nav--active') }
-  if (prev && next) {
-    prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
-    next.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
-    if (slidesCount == 1) {
-      prev.style.display = 'none'
-      next.style.display = 'none'
-    } else {
-      prev.style.display = 'none'
-      next.style.display = 'block'
-    }
-  }
-
-  // EventListeners
-  slideContainer.onmousedown = start
-  slideContainer.addEventListener('touchstart', start, false)
-  slideContainer.addEventListener('touchmove', move, false)
-  slideContainer.addEventListener('touchend', end, false)
-  slideContainer.addEventListener('transitionend', transition, false)
-
-  if (prev && next || navButtons[0] && (prev && next)) {
-    prev.addEventListener('click', (event) => { shiftSlide(event, 'prev') }, false)
-    next.addEventListener('click', (event) => { shiftSlide(event, 'next') }, false)
-  }
-  if (navButtons[0]) {
-    navButtons.forEach((nav, i) => {
-      let clickIndex = i
-      nav.addEventListener('click', (event) => {
-        navigateToSlide(clickIndex, null)
-        if (prev && next) { transition(event) }
-      }, false)
+    // Set width of each slide
+    slides.forEach(slide => {
+      slide.style.width = `${slideWidth}px`
     })
-  }
 
-  // Start function
-  function start(event) {
-    event.preventDefault()
+    // Set the slide container height and width
+    slideContainer.style.width = `${slidesCount * slideWidth}px`
+    slideContainer.style.height = `${slideHeight}px`
 
-    if (event.type == 'touchstart') {
-      // Get initial touch position
-      startX = event.touches[0].clientX
-    } else if (event.type == 'mousedown') {
-      mouseMoving = true
-      startX = event.clientX
-      slideContainer.onmousemove = move
-      slideContainer.onmouseup = end
+    // Reset slide container on page load or window resize
+    slideContainer.classList.remove('animate-transition')
+    slideContainer.style.transform = 'translateX(0px)'
+
+    // Style navigation items if available
+    if (navButtons[0]) { navButtons[0].classList.add('slide-nav--active') }
+    if (prev && next) {
+      prev.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
+      next.style.setProperty('--slide-controller-center', `${slideHeight / 2}px`)
+      if (slidesCount == 1) {
+        prev.style.display = 'none'
+        next.style.display = 'none'
+      } else {
+        prev.style.display = 'none'
+        next.style.display = 'block'
+      }
     }
-  }
 
-  // Move function
-  function move(event) {
-    event.preventDefault()
+    // EventListeners
+    slideContainer.onmousedown = start
+    slideContainer.addEventListener('touchstart', start, false)
+    slideContainer.addEventListener('touchmove', move, false)
+    slideContainer.addEventListener('touchend', end, false)
+    slideContainer.addEventListener('transitionend', transition, false)
 
-    if (event.type == 'touchmove') {
-      // Get moving touch position
-      moveX = event.touches[0].clientX
-      // Calc container touch movement
-      distanceX = (index * slideWidth) + (startX - moveX)
-      // Limit container from moving beyond last slide
-      slideContainer.style.transform = `translateX(-${distanceX}px)`
-    } else if (mouseMoving) {
-      moveX = event.clientX
-      // Calc container mouse movement
-      distanceX = (index * slideWidth) + (startX - moveX)
+    if (prev && next || navButtons[0] && (prev && next)) {
+      prev.addEventListener('click', (event) => { shiftSlide(event, 'prev') }, false)
+      next.addEventListener('click', (event) => { shiftSlide(event, 'next') }, false)
     }
-  }
+    if (navButtons[0]) {
+      navButtons.forEach((nav, i) => {
+        let clickIndex = i
+        nav.addEventListener('click', (event) => {
+          navigateToSlide(clickIndex, null)
+          if (prev && next) { transition(event) }
+        }, false)
+      })
+    }
 
-  // End function
-  function end(event) {
-    event.preventDefault()
+    // Start function
+    function start(event) {
+      event.preventDefault()
 
-    // Calc distance swiped 
-    let absMove = Math.abs(index * slideWidth - distanceX)
+      if (event.type == 'touchstart') {
+        // Get initial touch position
+        startX = event.touches[0].clientX
+      } else if (event.type == 'mousedown') {
+        mouseMoving = true
+        startX = event.clientX
+        slideContainer.onmousemove = move
+        slideContainer.onmouseup = end
+      }
+    }
 
-    if (event.type == 'mouseup' || event.type == 'touchend') {
-      if (absMove > 50) {
-        if (startX > moveX && index < lastIndex) {
-          index++
-        } else if (startX < moveX && index > 0) {
-          index--
+    // Move function
+    function move(event) {
+      event.preventDefault()
+
+      if (event.type == 'touchmove') {
+        // Get moving touch position
+        moveX = event.touches[0].clientX
+        // Calc container touch movement
+        distanceX = (index * slideWidth) + (startX - moveX)
+        // Limit container from moving beyond last slide
+        slideContainer.style.transform = `translateX(-${distanceX}px)`
+      } else if (mouseMoving) {
+        moveX = event.clientX
+        // Calc container mouse movement
+        distanceX = (index * slideWidth) + (startX - moveX)
+      }
+    }
+
+    // End function
+    function end(event) {
+      event.preventDefault()
+
+      // Calc distance swiped 
+      let absMove = Math.abs(index * slideWidth - distanceX)
+
+      if (event.type == 'mouseup' || event.type == 'touchend') {
+        if (absMove > 50) {
+          if (startX > moveX && index < lastIndex) {
+            index++
+          } else if (startX < moveX && index > 0) {
+            index--
+          }
         }
       }
-    }
-    mouseMoving = false
-    // Move and animate container
-    slideContainer.classList.add('animate-transition')
-    slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
-
-    // Move to new nav position
-    if (navButtons[0]) {
-      let slideIndex = index
-      navigateToSlide(null, slideIndex)
-    }
-  }
-
-  // Shiftslide function
-  function shiftSlide(event, clickEvent) {
-    event.preventDefault()
-
-    if (event.type == 'click') {
-      if (clickEvent == 'next' && index < lastIndex) {
-        index++
-      } else if (clickEvent == 'prev' && index > 0) {
-        index--
-      }
-    }
-    // Move and animate container
-    slideContainer.classList.add('animate-transition')
-    slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
-
-    // Move to new nav position
-    if (navButtons[0]) {
-      let slideIndex = index
-      navigateToSlide(null, slideIndex)
-    }
-  }
-
-  // Navigate to slide function
-  function navigateToSlide(clickIndex, slideIndex) {
-    if (clickIndex != null) {
-      index = clickIndex
+      mouseMoving = false
       // Move and animate container
       slideContainer.classList.add('animate-transition')
       slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
+
       // Move to new nav position
-      navButtons.forEach(nav => {
-        nav.classList.remove('slide-nav--active')
-      })
-      navButtons[clickIndex].classList.add('slide-nav--active')
+      if (navButtons[0]) {
+        let slideIndex = index
+        navigateToSlide(null, slideIndex)
+      }
     }
 
-    // Move to new nav position
-    if (slideIndex != null) {
-      navButtons.forEach(nav => {
-        nav.classList.remove('slide-nav--active')
-      })
-      navButtons[slideIndex].classList.add('slide-nav--active')
+    // Shiftslide function
+    function shiftSlide(event, clickEvent) {
+      event.preventDefault()
+
+      if (event.type == 'click') {
+        if (clickEvent == 'next' && index < lastIndex) {
+          index++
+        } else if (clickEvent == 'prev' && index > 0) {
+          index--
+        }
+      }
+      // Move and animate container
+      slideContainer.classList.add('animate-transition')
+      slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
+
+      // Move to new nav position
+      if (navButtons[0]) {
+        let slideIndex = index
+        navigateToSlide(null, slideIndex)
+      }
     }
-  }
 
-  // Transition function
-  function transition(event) {
-    event.preventDefault()
+    // Navigate to slide function
+    function navigateToSlide(clickIndex, slideIndex) {
+      if (clickIndex != null) {
+        index = clickIndex
+        // Move and animate container
+        slideContainer.classList.add('animate-transition')
+        slideContainer.style.transform = `translateX(-${index * slideWidth}px)`
+        // Move to new nav position
+        navButtons.forEach(nav => {
+          nav.classList.remove('slide-nav--active')
+        })
+        navButtons[clickIndex].classList.add('slide-nav--active')
+      }
 
-    // Show and hide arrow controller based on slide index position
-    if (index == 0) {
-      prev.style.display = 'none'
-      next.style.display = 'block'
-    } else if (index == lastIndex) {
-      prev.style.display = 'block'
-      next.style.display = 'none'
-    } else {
-      prev.style.display = 'block'
-      next.style.display = 'block'
+      // Move to new nav position
+      if (slideIndex != null) {
+        navButtons.forEach(nav => {
+          nav.classList.remove('slide-nav--active')
+        })
+        navButtons[slideIndex].classList.add('slide-nav--active')
+      }
+    }
+
+    // Transition function
+    function transition(event) {
+      event.preventDefault()
+
+      // Show and hide arrow controller based on slide index position
+      if (index == 0) {
+        prev.style.display = 'none'
+        next.style.display = 'block'
+      } else if (index == lastIndex) {
+        prev.style.display = 'block'
+        next.style.display = 'none'
+      } else {
+        prev.style.display = 'block'
+        next.style.display = 'block'
+      }
     }
   }
 }
 
 /*! SCROLLX */
 function scrollX() {
-  const container = document.querySelector('.scrollX'),
-      containerLeft = container.offsetLeft
-  
+  const containers = document.querySelectorAll('.scrollX')
+
   let scrollXActive = false,
-      startX,
-      scrollLeft,
-      distanceX,
-      moveX,
-      velX,
-      momentumID
+    startX,
+    scrollLeft,
+    distanceX,
+    moveX,
+    velX,
+    momentumID
 
-  container.addEventListener('mousedown', start) 
-  container.addEventListener('mousemove', move)
+  containers.forEach(container => {
+    container.addEventListener('mousedown', () => { start(container, event) })
+    container.addEventListener('mousemove', () => { move(container, event) })
 
-  container.addEventListener('mouseup', () => {
-    scrollXActive = false
-    container.classList.remove('scrollX--active')
-    momentumStart()
-  })
-  container.addEventListener('mouseleave', () => {
-    scrollXActive = false
-    container.classList.remove('scrollX--active')
-    // Disable anchors
-    if (container.querySelectorAll('a')) {
-      container.querySelectorAll('a').forEach(link => {
-        link.classList.remove('disable-pointer')
-      })
-    }
-  })
-  container.addEventListener('wheel', (event) => {
-    momentumEnd()
+    container.addEventListener('mouseup', () => {
+      scrollXActive = false
+      container.classList.remove('scrollX--active')
+      momentumStart(container)
+    })
+    container.addEventListener('mouseleave', () => {
+      scrollXActive = false
+      container.classList.remove('scrollX--active')
+      // Disable anchors
+      if (container.querySelectorAll('a')) {
+        container.querySelectorAll('a').forEach(link => {
+          link.classList.remove('disable-pointer')
+        })
+      }
+    })
+    container.addEventListener('wheel', (event) => {
+      momentumEnd()
+    })
   })
 
   // Start 
-  function start(event) {
+  function start(container, event) {
     event.preventDefault()
+
+    let containerLeft = container.offsetLeft
     // Allow mouse click and drag
     scrollXActive = true
     container.classList.add('scrollX--active')
@@ -327,10 +333,12 @@ function scrollX() {
     scrollLeft = container.scrollLeft
     momentumEnd()
   }
-  
+
   // Move
-  function move(event) {
-    if (!scrollXActive) return 
+  function move(container, event) {
+    let containerLeft = container.offsetLeft
+
+    if (!scrollXActive) return
     event.preventDefault()
 
     distanceX = event.clientX - containerLeft
@@ -343,21 +351,25 @@ function scrollX() {
   }
 
   // Momentum
-  function momentumStart() {
+  function momentumStart(container) {
     momentumEnd()
-    momentumID = requestAnimationFrame(momentumLoop)
+    momentumID = requestAnimationFrame(function () {
+      momentumLoop(container)
+    })
   }
 
   function momentumEnd() {
     cancelAnimationFrame(momentumID)
   }
 
-  function momentumLoop() {
-    container.scrollLeft += velX 
+  function momentumLoop(container) {
+    container.scrollLeft += velX
     velX *= 0.95
 
     if (Math.abs(velX) > 0.75) {
-      momentumID = requestAnimationFrame(momentumLoop)
+      momentumID = requestAnimationFrame(function () {
+        momentumLoop(container)
+      })
     }
   }
 }
