@@ -223,7 +223,10 @@
 
 // Filter blur
 @each $key, $size in $size-map {
-    .blur-#{$key} { backdrop-filter: blur($size); }
+    .blur-#{$key} { 
+      backdrop-filter: blur($size); 
+      -webkit-backdrop-filter: blur($size);
+    }
 }
 
 // Background color opacity
