@@ -49,6 +49,9 @@ To use the JavaScript enabled component utility classes, include the following l
 
 The Cocobits documentation is available at: [cocobits.github.io](https://cocobits.github.io/)
 
+## Example of Ecommerce Application
+<a href="http://daame.com" target="_blank">Daame.com</a>
+
 ## Licence  
 
 [MIT](LICENSE)
