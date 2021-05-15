@@ -225,7 +225,7 @@
 @each $key, $size in $size-map {
     .blur-#{$key} { 
       backdrop-filter: blur($size); 
-      -webkit-backdrop-filter: blur($size);
+      -webkit-backdrop-filter: blur($size); // Safari
     }
 }
 
